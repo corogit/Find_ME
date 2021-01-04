@@ -31,7 +31,8 @@
 ## ER図
 <img width="579" alt="スクリーンショット 2021-01-04 16 22 32" src="https://user-images.githubusercontent.com/66649016/103510806-3f196300-4ea9-11eb-9156-4f4e25ac0c27.png">
 
-
+##  テーブル定義書
+<https://docs.google.com/spreadsheets/d/1kH-yqroCACDAF613GnTWp9ZNXdsoS3sKStgP-oe64sc/edit#gid=1425021709>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1-DXWT5HB3lr47UV2raNOoYP1N6PcUOGYzup3Ms3KUMg/edit#gid=0>
