@@ -60,7 +60,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="form-group">
       <div class="col-xs-3">
@@ -71,7 +71,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="form-group">
       <div class="col-xs-3">
@@ -82,14 +82,14 @@
       </div>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="form-group">
       <div class="col-xs-3">
         <%= f.label :password, "パスワード(6文字以上)" %>
       </div>
       <div class="col-xs-4">
-        <%= f.password_field :password, placeholder: "パスワード", autocomplete: "new-password" %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
     </div>
   </div>
@@ -100,7 +100,7 @@
         <%= f.label :password_confirmation, "パスワード(確認用)" %>
       </div>
       <div class="col-xs-4">
-        <%= f.password_field :password_confirmation, placeholder: "パスワード確認用", autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
     </div>
   </div>
@@ -109,7 +109,7 @@
 
 
 
- 
+
 
   <div class="actions">
     <%= f.submit "Sign up" %>
