@@ -1,0 +1,39 @@
+<div class='container'>
+  <div class='row mt-5 ml-5'>
+    <h2 class="heading">飼い主さんを募集中</h2>
+  </div>
+  <div class="row">
+    <div class="col-lg-10 mx-auto mt-3">
+      <table class="table table-bordered">
+        <thead class='thead-light'>
+          <tr class='table-name'>
+            <th>お名前</th>
+            <th>ジャンル</th>
+            <th>お誕生日</th>
+            <th>性別</th>
+            <th>特徴</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--テーブルの中身-->
+
+          <% @pets.each do |pet| %>
+
+            <tr>
+              <td><%= pet.id %></td>
+              <td><%= link_to pet_path(pet.id) do %>
+                  <%= pet.name %>
+                  <% end %></td>
+
+
+              <td><%= pet.birthday %></td>
+              <td><%= pet.gender %></td>
+              <td><%= pet.introduction %></td>
+            </tr>
+        
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
