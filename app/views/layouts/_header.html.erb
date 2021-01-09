@@ -1,0 +1,50 @@
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-light ma-auto">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+
+        <% if user_signed_in? %>
+          <p class="", style="color:black"> ようこそ、<strong><%= current_user.last_name %> <%= current_user.first_name %></strong> さん！</p>
+          <li class="nav-item">
+            <%= link_to "TOP", root_path, class: 'btn btn-secondary nav-link text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-secondary nav-link text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "飼い主さん募集中の動物たち", pets_path, class: 'btn btn-secondary nav-link text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '投稿フォーム', new_pet_path, class: 'btn btn-secondary nav-link text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ABOUT", about_path, class: 'btn btn-secondary nav-link text-white' %> 
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-danger nav-link text-white' %>
+          </li>
+            
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "TOP", root_path, class: 'btn btn-secondary nav-link text-white' %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "About", about_path, class: 'btn btn-secondary nav-link text-white' %> 
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "飼い主さん募集中の動物たち", pets_path, class: 'btn btn-secondary nav-link text-white' %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "登録する", new_user_registration_path, class: 'btn btn-secondary nav-link text-white' %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "ログイン", new_user_session_path, class: 'btn btn-secondary nav-link text-white' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>

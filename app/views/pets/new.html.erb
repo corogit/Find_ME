@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+     <div class="col-lg-12 col-sm-12 text-center mt-4">
+    <%= form_with model: @pet, url: pets_path, method: :pu, local: true do |f| %>
+
+      <%= f.attachment_field :image, size: "300x300" %>
+
+
+
+        <table class="table table-borderless">
+          <tr>
+            <td><%= f.label :"お名前" %></td>
+                <td><%= f.text_field :name, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :"ジャンル" %></td>
+              <td><%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "-- 選択してください--") %></td>
+              <td>
+              <%= link_to "新ジャンル追加", genres_path %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :"お誕生日" %></td>
+              <td><%= f.text_field :birthday, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :"性別" %></td>
+              <!--選択できるようにしたい-->
+              <td><%= f.select :gender, [['男の子', true], ['女の子', false]], prompt: "-- 選択してください --" %></td>
+            </tr>
+            <tr>
+                <td><%= f.label :"紹介" %></td>
+                <td><%= f.text_field :introduction, class: "form-control" %></td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col-lg-12 col-sm-12 text-center mt-4">
+            <%= f.submit "新規登録", class: "btn btn-secondary" %>
+        </div>
+    </div>
+</div>
+<% end %>
