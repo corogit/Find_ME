@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-     <div class="col-lg-12 col-sm-12 text-center mt-4">
-    <%= form_with model: @pet, url: pets_path, method: :post, local: true do |f| %>
+    <div class="col-lg-12 col-sm-12 text-center mt-4">
+    <%= form_with model: @pet, url: pet_path, method: :put, local: true do |f| %>
 
-      <%= f.attachment_field :image, size: "300x300" %>
+ 
 
 
 
@@ -36,7 +36,7 @@
     </div>
     <div class='row'>
         <div class="col-lg-12 col-sm-12 text-center mt-4">
-            <%= f.submit "新規投稿", class: "btn btn-secondary" %>
+            <%= f.submit "更新する", class: "btn btn-secondary" %>
         </div>
     </div>
 </div>
