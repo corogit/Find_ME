@@ -1,0 +1,17 @@
+<%= form_with model: @genre, url: genres_path, local: true do |f| %>
+    <div class="col-lg-9 mx-auto">
+        <table class="table table-borderless">
+            <tr>
+                <td><%= f.label :"ジャンル" %></td>
+                <td><%= f.text_field :name, class: "form-control" %></td>
+            </tr>
+            <tr>
+                <td><%= f.radio_button :is_active, true %>有効
+                    <%= f.radio_button :is_active, false %>無効</td>
+            </tr>
+            <tr>
+                <td><%= f.submit "追加", class: "btn btn-secondary ml-3 mt-3" %></td>
+            </tr>
+        </table>
+    </div>
+<% end %>

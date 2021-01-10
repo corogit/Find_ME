@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_07_122319) do
+ActiveRecord::Schema.define(version: 2021_01_09_075314) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_122319) do
   end
 
   create_table "pets", force: :cascade do |t|
-    t.integer "ganre_id"
+    t.integer "genre_id"
     t.string "name"
     t.string "birthday"
     t.string "gender"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_122319) do
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_122319) do
     t.string "address"
     t.string "phone_number"
     t.boolean "is_deleted", default: false
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
