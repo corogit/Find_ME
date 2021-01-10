@@ -4,36 +4,16 @@
   </div>
   <div class="row">
     <div class="col-lg-10 mx-auto mt-3">
-      <table class="table table-bordered">
-        <thead class='thead-light'>
-          <tr class='table-name'>
-            <th>お名前</th>
-            <th>ジャンル</th>
-            <th>お誕生日</th>
-            <th>性別</th>
-            <th>特徴</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!--テーブルの中身-->
-
-          <% @pets.each do |pet| %>
-
-            <tr>
-              <td><%= pet.id %></td>
-              <td><%= link_to pet_path(pet.id) do %>
-                  <%= pet.name %>
-                  <% end %></td>
-
-
-              <td><%= pet.birthday %></td>
-              <td><%= pet.gender %></td>
-              <td><%= pet.introduction %></td>
-            </tr>
-        
-          <% end %>
-        </tbody>
-      </table>
+       <p class="pet-count">全<%= @pets.count %>件</p>
+        <% @pets.each do |pet| %>
+          <div class="item-list">
+            <%= link_to pet_path(pet.id) do %>
+              <%= attachment_image_tag pet, :image, format: "jpg", size: "180x180", fallback: "no_image.jpg" %>
+               <p class="pet-name"><%= pet.name %></p>
+            <% end %>
+            <p><%= pet.gender %></p>
+            <p><%= pet.birthday %></p>
+          </div>
+        <% end %>
     </div>
   </div>

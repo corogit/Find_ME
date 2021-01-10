@@ -21,6 +21,22 @@ class PetsController < ApplicationController
   end
 
   def show
+    @pet = Pet.find(params[:id])
+  end
+  
+  def edit
+    @pet = Pet.find(params[:id])
+    @genres = Genre.all
+  end
+  
+  def update
+    @pet = Pet.find(params[:id])
+    if @pet.update(pet_params)
+      redirect_to pet_path
+    else
+      @genres = Genre.all
+      render :edit
+    end
   end
 
   def destroy

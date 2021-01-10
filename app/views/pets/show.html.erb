@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row mt-5 ml-5">
+        <h2>ペット詳細</h2>   
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <p><%= attachment_image_tag @pet, :image, size: "300x300", format: 'jpg', fallback: "no_image.jpg", class: "rounded mt-5" %></p>
+        </div>
+ 
+        <div class="col-lg-8 mt-5 ml-5">
+            <table class="table table-borderless">
+              <tr>
+                <td>ジャンル</td>
+                <td><%= @pet.genre.name %></td>
+              </tr>
+              <tr>
+                <td>お名前</td>
+                <td><%= @pet.name %></td>
+              </tr>
+              <tr>
+                <td>お誕生日</td>
+                <td><%= @pet.birthday %></td>
+              </tr>
+              <tr>
+                <td>性別</td>
+                <td><%= @pet.gender %></td>
+              </tr>
+              <tr>
+                <td>特徴</td>
+                <td><%= @pet.introduction %></td>
+                </tr>
+                <tr>
+                  <td>ステータス</td>
+                  <td><% if @pet.is_active == true %>
+                      <p>募集中<p>
+                      <% elsif @pet.is_active == false %>
+                      <p>新しいおうちが見つかったよ！</p>
+                      <% end %>
+                  </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 text-center mt-4">
+        <%= link_to "編集", edit_pet_path(@pet.id),  class: "btn btn-secondary" %> 
+        </div>
+    </div>
+</div>
