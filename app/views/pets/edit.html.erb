@@ -37,6 +37,7 @@
     <div class='row'>
         <div class="col-lg-12 col-sm-12 text-center mt-4">
             <%= f.submit "更新する", class: "btn btn-secondary" %>
+            <%= link_to "削除する", pet_path(@pet), method: :delete, "data-confirm" => "本当に削除しますか？" %>
         </div>
     </div>
 </div>
