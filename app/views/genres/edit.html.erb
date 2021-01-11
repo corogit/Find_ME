@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+      <%= form_with model: @genre, url: genre_path(@genre.id), method: :put, local: true do |f| %>
+        <table class="table table-borderless">
+            <tr>
+                <td><%= f.label :"ジャンル" %></td>
+                <td><%= f.text_field :name, class: "form-control" %></td>
+            </tr>
+            <tr>
+                <td><%= f.radio_button :is_active, true %>取り扱い中
+                    <%= f.radio_button :is_active, false %>現在取り扱っておりません</td>
+            </tr>
+            <tr>
+                <td><%= f.submit "更新する", class: "btn btn-secondary" %></td>
+            </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

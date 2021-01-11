@@ -13,7 +13,7 @@
             <p>お名前 <%= pet.name %></p>
             <p>性別 <%= pet.gender %></p>
             <p>お誕生日 <%= pet.birthday %></p>
-            <p>投稿者 <%= attachment_image_tag pet.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %></p>
+            <p>投稿者  <%= attachment_image_tag pet.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %></p>
       
           </div>
         <% end %>
