@@ -1,17 +1,43 @@
-<%= form_with model: @genre, url: genres_path, local: true do |f| %>
-    <div class="col-lg-9 mx-auto">
-        <table class="table table-borderless">
-            <tr>
-                <td><%= f.label :"ジャンル" %></td>
-                <td><%= f.text_field :name, class: "form-control" %></td>
-            </tr>
-            <tr>
-                <td><%= f.radio_button :is_active, true %>有効
-                    <%= f.radio_button :is_active, false %>無効</td>
-            </tr>
-            <tr>
-                <td><%= f.submit "追加", class: "btn btn-secondary ml-3 mt-3" %></td>
-            </tr>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 mx-auto">
+            <table class="table table-borderless">
+                <%= form_with model: @genre, url: genres_path, local: true do |f| %>
+                    <tr>
+                        <td><%= f.label :"ジャンル" %></td>
+                        <td><%= f.text_field :name, class: "form-control" %></td>
+                    </tr>
+                    <tr>
+                        <td><%= f.radio_button :is_active, true %>取り扱い中
+                            <%= f.radio_button :is_active, false %>現在取り扱っておりません</td>
+                    </tr>
+                    <tr>
+                        <td><%= f.submit "追加", class: "btn btn-secondary ml-3 mt-3" %></td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+
+        <table class="table table-bordered text-center mt-5">
+            <thead class='thead-light'>
+                <tr class="table-name">
+                    <th>ジャンル</th>
+                    <th>状態</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody style="padding-bottom: 100px">
+                <% @genres.each do |genre| %>
+                    <tr>
+                        <% if genre.is_active == true %>
+                            <td><%= genre.name %></td>
+                            <td>取り扱い中</td>
+                            <td><%= link_to "編集する", edit_genre_path(genre.id), class: "btn btn-secondary" %>
+                                <%= link_to "削除する", genre_path(genre.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
         </table>
     </div>
-<% end %>
+</div>
