@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   resources :messages, only: [:create]
   resources :rooms, only: [:create,:show]
-  resources :genres, only: [:index, :create]
+  resources :genres
   
   resources :pets do
     resource :favorites, only: [:create, :destroy]
