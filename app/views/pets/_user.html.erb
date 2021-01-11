@@ -1,0 +1,30 @@
+<h2>ユーザー情報</h2>
+<%= attachment_image_tag user, :profile_image, size: '100x100', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
+<table class='table'>
+    <tbody>
+        <tr></tr>
+        <tr>
+            <th>name</th>
+            <th><%= user.full_name %></th>
+        </tr>
+        <tr>
+            <th>introduction</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Follows</th>
+            <td></td>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Followers</th>
+            <td></td>
+            <th></th>
+        </tr>
+    </tbody>
+</table>
+
+
+
+</br>
+<%= link_to "編集", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog"%>

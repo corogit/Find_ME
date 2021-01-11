@@ -1,21 +1,12 @@
 <div class="container">
-  <div class="row mt-5 ml-5">
-    <h2 class="heading">マイページ</h2>
-  </div>
-  <div class="row">
-    <div class="col-lg-4 mx-auto mt-3">
-      <div class="profile-container">
-        <h3 class="profile-name"><%= @user.last_name %><%= @user.first_name %></h3>
-        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
-        <% if @user.id == current_user.id %>
-          <p><%= link_to "編集する", edit_user_path(@user) %></p>
-        <% end %>
-      </div>
+  <div class="row mt-5">
+    <div class="col-lg-3">
+    <%= render 'pets/user', user: current_user %>
     </div>
-
-
   
-    <div class="col-lg-8 mx-auto mt-3">
+  
+    <div class="col-lg-8 offset-lg-1">
+       <h2 class="heading">マイページ</h2>
       <% @pets.each do |pet| %>
        <div class="item-list">
             <%= link_to pet_path(pet.id) do %>

@@ -1,21 +1,29 @@
 <div class='container'>
-  <div class='row mt-5 ml-5'>
-    <h2 class="heading">飼い主さんを募集中</h2>
-  </div>
-  <div class="row">
-    <div class="col-lg-10 mx-auto mt-3">
+  <div class='row mt-5'>
+    <div class="col-lg-3">
+      <%= render 'pets/user', user: current_user %>
+    </div>
+    
+
+  
+    <div class="col-lg-8 offset-lg-1">
+      <h2 class="heading">飼い主さんを募集中</h2>
        <p class="pet-count">全<%= @pets.count %>件</p>
         <% @pets.each do |pet| %>
-          <div class="item-list">
+        
             <%= link_to pet_path(pet.id) do %>
               <%= attachment_image_tag pet, :image, format: "jpg", size: "180x180", fallback: "no_image.jpg" %>
             <% end %>
             <p>お名前 <%= pet.name %></p>
             <p>性別 <%= pet.gender %></p>
             <p>お誕生日 <%= pet.birthday %></p>
-            <p>投稿者  <%= attachment_image_tag pet.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %></p>
-      
-          </div>
+            <p>投稿者 
+            
+              <%= attachment_image_tag pet.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %>
+              
+            </p>
+          
         <% end %>
+      </div>
     </div>
   </div>
