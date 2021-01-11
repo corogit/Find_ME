@@ -42,7 +42,13 @@
           <td>投稿者</td>
           <td>
             <%= attachment_image_tag @pet.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
-            </td>
+          </td>
+        </tr>
+        <tr>
+          <td>検討中</td>
+          <td class="favorite-btn<%= @pet.id %>">
+            <%= render 'favorites/favorite', pet: @pet %>
+          </td>
         </tr>
       </table>
       <%= link_to "編集", edit_pet_path(@pet.id),  class: "btn btn-secondary" %>

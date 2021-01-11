@@ -22,6 +22,9 @@
               <%= attachment_image_tag pet.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %>
               
             </p>
+             <div class="favorite-btn<%= pet.id %>">
+              <%= render 'favorites/favorite', pet: pet %>
+             </div>
           
         <% end %>
       </div>

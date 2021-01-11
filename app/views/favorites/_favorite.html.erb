@@ -1,0 +1,13 @@
+<% if pet.favorited_by?(current_user) %>
+    <p>
+      <%= link_to pet_favorites_path(pet), method: :delete, remote: true do %>
+        ♥<%= pet.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+      <p>
+        <%= link_to pet_favorites_path(pet), method: :post, remote: true do %>
+          ♡<%= pet.favorites.count %>
+        <% end %>
+      </p>
+<% end %>
