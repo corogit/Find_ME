@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @pets = @user.pets
+    @comment = Comment.new
+    @comments = Comment.all
   end
 
   def edit

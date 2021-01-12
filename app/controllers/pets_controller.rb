@@ -24,6 +24,8 @@ class PetsController < ApplicationController
   def show
     @pet = Pet.find(params[:id])
     @user = current_user
+    @comment = Comment.new
+    @comments = Comment.all
   end
   
   def edit
