@@ -1,0 +1,2 @@
+$(".comments_<%= @pet.id %>").html("<%= j (render 'comments/comment', pet: @pet, comment: @comment) %>");
+$("text_field").val("");

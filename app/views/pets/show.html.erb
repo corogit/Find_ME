@@ -50,10 +50,15 @@
             <%= render 'favorites/favorite', pet: @pet %>
           </td>
         </tr>
+        <tr>
+          <td>コメント</td>
+          <td class="comments_<%= @pet.id %>">
+          <%= render 'comments/comment', pet: @pet, comment: @comment %>
+          </td>
+        </tr>
       </table>
       <%= link_to "編集", edit_pet_path(@pet.id),  class: "btn btn-secondary" %>
     </div>
  
   </div>
-</div>
 </div>

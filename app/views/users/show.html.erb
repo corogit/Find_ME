@@ -16,6 +16,12 @@
             <p><%= pet.gender %></p>
             <p><%= pet.birthday %></p>
         </div>
+        <div class="favorite-btn<%= pet.id %>">
+          <%= render 'favorites/favorite', pet: pet %>
+        </div>
+        <div class="comments_<%= pet.id %>">
+        <%= render 'comments/comment', pet: pet, comment: @comment %>
+        </div>
       <% end %>
     </div>
   </div>
