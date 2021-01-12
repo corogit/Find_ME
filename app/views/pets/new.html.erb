@@ -1,12 +1,9 @@
 <div class="container">
   <div class="row">
-     <div class="col-lg-12 col-sm-12 text-center mt-4">
-    <%= form_with model: @pet, url: pets_path, method: :post, local: true do |f| %>
+    <div class="col-lg-12 col-sm-12 text-center mt-4">
+      <%= form_with model: @pet, url: pets_path, method: :post, local: true do |f| %>
 
-      <%= f.attachment_field :image, size: "300x300" %>
-
-
-
+        <%= f.attachment_field :image, size: "300x300" %>
         <table class="table table-borderless">
           <tr>
             <td><%= f.label :"お名前" %></td>
@@ -31,13 +28,11 @@
                 <td><%= f.label :"紹介" %></td>
                 <td><%= f.text_area :introduction, class: "form-control" %></td>
             </tr>
+            <tr>
+                <td colspan=3><%= f.submit "新規投稿", class: "btn btn-secondary" %></td>
+            </tr>
         </table>
-        </div>
+      <% end %>
     </div>
-    <div class='row'>
-        <div class="col-lg-12 col-sm-12 text-center mt-4">
-            <%= f.submit "新規投稿", class: "btn btn-secondary" %>
-        </div>
-    </div>
+  </div>
 </div>
-<% end %>

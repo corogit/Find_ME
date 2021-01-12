@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9 mx-auto">
-            <table class="table table-borderless">
-                <%= form_with model: @genre, url: genres_path, local: true do |f| %>
+            <%= form_with model: @genre, url: genres_path, local: true do |f| %>
+                <table class="table table-borderless">
                     <tr>
                         <td><%= f.label :"ジャンル" %></td>
                         <td><%= f.text_field :name, class: "form-control" %></td>
@@ -14,8 +14,8 @@
                     <tr>
                         <td><%= f.submit "追加", class: "btn btn-secondary ml-3 mt-3" %></td>
                     </tr>
-                <% end %>
-            </table>
+                </table>
+            <% end %>
         </div>
 
         <table class="table table-bordered text-center mt-5">

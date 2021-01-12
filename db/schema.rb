@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_075314) do
     t.integer "genre_id"
     t.string "name"
     t.string "birthday"
-    t.string "gender"
+    t.boolean "gender"
     t.string "introduction"
     t.string "image_id"
     t.boolean "is_active"
