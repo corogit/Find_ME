@@ -4,27 +4,31 @@
     <tbody>
         <tr></tr>
         <tr>
-            <th>name</th>
+            <th>名前</th>
             <th><%= user.full_name %></th>
-        </tr>
-        <tr>
-            <th>introduction</th>
             <th></th>
         </tr>
         <tr>
-            <th>Follows</th>
-            <td></td>
+            <th>紹介文</th>
+            <th></th>
             <th></th>
         </tr>
         <tr>
-            <th>Followers</th>
-            <td></td>
+            <th>フォロー</th>
+            <td><%= link_to user.followings.count, followings_user_path(user.id) %>人</td>
+            <th></th>
+        </tr>
+        <tr>
+            <th>フォロワー</th>
+            <td><%= link_to user.followers.count, followers_user_path(user.id) %>人</td>
             <th></th>
         </tr>
     </tbody>
 </table>
 
-
-
+<div id="follow_button">
+<%= render 'relationships/follow_button', user: user %>
+</div>
 </br>
+
 <%= link_to "編集", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog"%>

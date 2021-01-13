@@ -9,8 +9,29 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
-  
+
   attachment :profile_image
+  
+  has_many :relationships, foreign_key: "follower_id", class_name: "Relationship",  dependent: :destroy
+  has_many :followings, through: :relationships, source: :following
+  has_many :reverse_of_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+
+  def follow(other_user)
+    unless self == other_user
+      self.relationships.find_or_create_by(following_id: other_user.id)
+    end
+  end
+
+  def unfollow(other_user)
+    relationship = self.relationships.find_by(following_id: other_user.id)
+    relationship.destroy if relationship
+  end
+
+  def following?(other_user)
+    self.followings.include?(other_user)
+  end
+
   
   
   def full_name

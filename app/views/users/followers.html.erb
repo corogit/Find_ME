@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10">
+      <h2>Follower Users</h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>プロフィール画像</th>
+              <th>名前</th>
+              <th>フォロー数</th>
+              <th>フォロワー数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @user.followers.each do |user| %>
+            <tr>
+              <td><%= attachment_image_tag user, :profile_image, size: '60x60', fallback: "no_image_icon.jpg", class: "rounded-circle" %></td>
+              <td><%= user.full_name %></td>
+              <td><%= user.followings.count %></td>
+              <td><%= user.followers.count %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
