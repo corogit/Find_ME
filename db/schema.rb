@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_075314) do
+ActiveRecord::Schema.define(version: 2021_01_13_023842) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
@@ -50,16 +50,24 @@ ActiveRecord::Schema.define(version: 2021_01_09_075314) do
   end
 
   create_table "pets", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "genre_id"
     t.string "name"
     t.string "birthday"
-    t.boolean "gender"
+    t.string "gender"
     t.string "introduction"
     t.string "image_id"
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "following_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
   end
 
   create_table "rooms", force: :cascade do |t|

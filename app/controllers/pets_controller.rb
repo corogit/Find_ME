@@ -18,7 +18,6 @@ class PetsController < ApplicationController
 
   def index
     @pets = Pet.all
-    @user = current_user
   end
 
   def show

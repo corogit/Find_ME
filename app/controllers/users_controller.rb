@@ -34,9 +34,23 @@ class UsersController < ApplicationController
     end
   end
   
+  def followings
+    #@userがフォローしているユーザー
+    @user  = User.find(params[:id])
+    @users = @user.followings
+    
+  end
+
+  def followers
+    #@userをフォローしているユーザー
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    @pet = @user.pets
+  end
+  
   private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :zipcode, :address, :phone_number, :profile_image)
+    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :zipcode, :address, :phone_number, :profile_image, :followers, :follower)
   end
 
 end
