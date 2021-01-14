@@ -5,9 +5,9 @@
       <% end %>
     </p>
     <% else %>
-      <p>
-        <%= link_to pet_favorites_path(pet), method: :post, remote: true do %>
-          ♡<%= pet.favorites.count %>
-        <% end %>
-      </p>
+    <p>
+      <%= link_to pet_favorites_path(pet), method: :post, remote: true do %>
+        ♡<%= pet.favorites.count %>
+      <% end %>
+    </p>
 <% end %>

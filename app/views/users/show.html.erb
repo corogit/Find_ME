@@ -1,28 +1,30 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-lg-3">
-    <%= render 'pets/user', user: current_user %>
+      <%= render 'pets/user', user: current_user %>
     </div>
   
-  
     <div class="col-lg-8 offset-lg-1">
-       <h2 class="heading">マイページ</h2>
-      <% @pets.each do |pet| %>
-       <div class="item-list">
+      <h2 class="heading">マイページ</h2>
+        <% @pets.each do |pet| %>
+          <div class="p-list">
             <%= link_to pet_path(pet.id) do %>
-              <%= attachment_image_tag pet, :image, format: "jpg", size: "180x180", fallback: "no_image.jpg" %>
-               <p class="pet-name"><%= pet.name %></p>
+              <%= attachment_image_tag pet, :image, format: "jpg", size: "300x300", fallback: "no_image.jpg", class: "rounded" %>
             <% end %>
-            <p><%= pet.gender %></p>
-            <p><%= pet.birthday %></p>
-        </div>
-        <div class="favorite-btn<%= pet.id %>">
-          <%= render 'favorites/favorite', pet: pet %>
-        </div>
-        <div class="comments_<%= pet.id %>">
-        <%= render 'comments/comment', pet: pet, comment: @comment %>
-        </div>
-      <% end %>
+            <p class="pet-name">お名前: 
+            <%= link_to pet_path(pet.id) do %>
+              <%= pet.name %></p>
+            <% end %>
+            <p>性別: <%= pet.gender %></p>
+            <p>お誕生日: <%= pet.birthday %></p>
+          </div>
+          <div class="favorite-btn<%= pet.id %>">
+            <%= render 'favorites/favorite', pet: pet %>
+          </div>
+          <div class="comments_<%= pet.id %>">
+            <%= render 'comments/comment', pet: pet, comment: @comment %>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>

@@ -1,130 +1,56 @@
-<h2>新規登録</h2>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-10">
+      <h2>新規登録</h2>
+      <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
+      <div class="form-group">
         <%= f.label :profile_image, "プロフィール画像" %>
+        <%= f.attachment_field :profile_image %>
       </div>
-      <div class="col-xs-4">
-         <%= f.attachment_field :profile_image %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
-        <span><b>名前</b></span>
-      </div>
-
-      <div class="col-xs-4">
+      <div class="form-group">
         <%= f.text_field :last_name, autofocus: true, placeholder: "(例)山田", style: "margin-bottom: 10px;" %>
-        <%= f.label :last_name, "(姓)", style: "float: left;" %>
-      </div>
-
-      <div class="col-xs-4">
+        <%= f.label :last_name, "名前", style: "float: left;" %>
         <%= f.text_field :first_name, placeholder: "(例)太郎" %>
-        <%= f.label :first_name, "(名)", style: "float: left;" %>
+        <%= f.label :first_name, "(姓・名)", style: "float: left;" %>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
-        <span><b>フリガナ</b></span>
-      </div>
-
-      <div class="col-xs-4">
+      <div class="form-group">
         <%= f.text_field :last_name_kana, autofocus: true, placeholder: "(例)ヤマダ", autocomplete: "last_name_kana", style: "margin-bottom: 10px;" %>
-        <%= f.label :last_name_kana, "(セイ)", style: "float: left;" %>
-      </div>
-
-      <div class="col-xs-4">
+        <%= f.label :last_name_kana, "フリガナ", style: "float: left;" %>
         <%= f.text_field :first_name_kana, placeholder: "(例)タロウ", autocomplete: "first_name_kana" %>
-        <%= f.label :first_name_kana, "(メイ)", style: "float: left;" %>
+        <%= f.label :first_name_kana, "(セイ・メイ)", style: "float: left;" %>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
+      <div class="form-group">
         <%= f.label :email, "メールアドレス" %>
-      </div>
-      <div class="col-xs-4">
         <%= f.email_field :email, placeholder: "(例)yamada_taro@findme.com", autocomplete: "email" %>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
+      <div class="form-group">
         <%= f.label :zipcode, "郵便番号(ハイフンなし)" %>
-      </div>
-      <div class="col-xs-4">
         <%= f.text_field :zipcode, placeholder: "(例)6666666", autocomplete: "zipcode" %>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
+      <div class="form-group">
         <%= f.label :address, "住所" %>
-      </div>
-      <div class="col-xs-4">
         <%= f.text_field :address, placeholder: "(例)東京都〇〇区〇〇町〇-〇-〇", autocomplete: "address", style: "width: 100%;" %>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
+      <div class="form-group">
         <%= f.label :phone_number, "電話番号(ハイフンなし)" %>
-      </div>
-      <div class="col-xs-4">
         <%= f.text_field :phone_number, placeholder: "(例)0901234567", autocomplete: "phone_number" %>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
+      <div class="form-group">
         <%= f.label :password, "パスワード(6文字以上)" %>
-      </div>
-      <div class="col-xs-4">
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
+      <div class="form-group">
         <%= f.label :password_confirmation, "パスワード(確認用)" %>
-      </div>
-      <div class="col-xs-4">
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
+      <div class="actions">
+        <%= f.submit "Sign up", class: "btn btn-secondary" %>
+      </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
     </div>
   </div>
-  </br>
-
-
-
-
-
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

@@ -1,3 +1,17 @@
 // Place all the styles related to the pets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.pet-box {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 60px;
+}
+
+.pet-list {
+  margin: 30px;
+  line-height: 4px;
+}
+
+.pet-name {
+  margin-top: 12px;
+}

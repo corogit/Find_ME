@@ -59,46 +59,14 @@
   <div class="row">
     <div class="form-group">
       <div class="col-xs-3">
-        <%= f.label :email, "メールアドレス" %>
+        <%= f.label :introduction, "紹介文" %>
       </div>
       <div class="col-xs-4">
-        <%= f.email_field :email, placeholder: "(例)yamada_taro@findme.com", autocomplete: "email" %>
+        <%= f.text_area :introduction, placeholder: "(例)初めまして。", autocomplete: "introduction" %>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
-        <%= f.label :zipcode, "郵便番号(ハイフンなし)" %>
-      </div>
-      <div class="col-xs-4">
-        <%= f.text_field :zipcode, placeholder: "(例)6666666", autocomplete: "zipcode" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
-        <%= f.label :address, "住所" %>
-      </div>
-      <div class="col-xs-4">
-        <%= f.text_field :address, placeholder: "(例)東京都〇〇区〇〇町〇-〇-〇", autocomplete: "address", style: "width: 100%;" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-3">
-        <%= f.label :phone_number, "電話番号(ハイフンなし)" %>
-      </div>
-      <div class="col-xs-4">
-        <%= f.text_field :phone_number, placeholder: "(例)0901234567", autocomplete: "phone_number" %>
-      </div>
-    </div>
-  </div>
   <%= f.submit "変更を保存" %>
 
    <% end %>
