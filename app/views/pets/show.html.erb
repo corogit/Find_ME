@@ -1,13 +1,12 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-lg-3">
-    
+       <h2>ペット詳細</h2>
+      <p><%= attachment_image_tag @pet, :image, size: "350x350", format: 'jpg', fallback: "no_image.jpg", class: "rounded mt-4" %></p>
     </div>
 
     <div class="col-lg-8 offset-lg-1">
-      <h2>ペット詳細</h2>
-      <p><%= attachment_image_tag @pet, :image, size: "300x300", format: 'jpg', fallback: "no_image.jpg", class: "rounded" %></p>
-      <div class="pet.name">
+      <div class="pet.name mt-5 ml-5">
         <p>ジャンル: <%= @pet.genre.name %></p>
         <p>お名前: <%= @pet.name %></p>
         <p>お誕生日: <%= @pet.birthday %></p>
@@ -19,7 +18,7 @@
           <% elsif @pet.is_active == false %>
             <p>新しいおうちが見つかったよ！</p>
           <% end %>
-        <p>投稿者: 
+        <p>投稿者:
           <%= link_to user_path(@pet.user) do %>
             <%= attachment_image_tag @pet.user, :profile_image, size: "60x60", format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
           <% end %>
@@ -30,7 +29,8 @@
         <div class="comments_<%= @pet.id %>">
           <%= render 'comments/comment', pet: @pet, comment: @comment %>
         </div>
-        <%= link_to "編集", edit_pet_path(@pet.id),  class: "btn btn-secondary" %>
+        <br>
+        <%= link_to "編集する", edit_pet_path(@pet.id),  class: "btn btn-secondary" %>
       </div>
     </div>
   </div>

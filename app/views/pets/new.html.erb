@@ -4,8 +4,8 @@
       <%= render 'pets/user', user: current_user %>
     </div>
     <div class="col-lg-8 offset-lg-1">
+      <h2 class="heading">新規投稿フォーム</h2>
       <%= form_with model: @pet, url: pets_path, method: :post, local: true do |f| %>
-
         <%= f.attachment_field :image, size: "300x300" %>
         <table class="table table-borderless">
           <tr>
@@ -32,7 +32,7 @@
                 <td><%= f.text_area :introduction, class: "form-control" %></td>
             </tr>
             <tr>
-                <td colspan=3><%= f.submit "新規投稿", class: "btn btn-secondary" %></td>
+                <td colspan=3><%= f.submit "投稿する", class: "btn btn-secondary" %></td>
             </tr>
         </table>
       <% end %>
