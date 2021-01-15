@@ -1,11 +1,18 @@
 <h2>ユーザー情報</h2>
+
 <%= attachment_image_tag user, :profile_image, size: '100x100', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
 <table class='table'>
     <tbody>
         <tr></tr>
         <tr>
             <th>名前</th>
-            <th><%= user.full_name %></th>
+            <th><% if user == current_user %>
+                    <%= user.full_name %>
+                <% else %>
+                    <%= link_to user_path(user.id) do %>
+                        <%= user.full_name %>
+                    <% end %>
+                <% end %></th>
             <th></th>
         </tr>
         <tr>
@@ -32,3 +39,16 @@
 </br>
 
 <%= link_to "編集", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog"%>
+<br>
+ <% unless user.id == current_user.id %>
+          <% if @isRoom == true %>
+            <%= link_to "DMを送る", room_path(@roomId), class: "btn btn-outline-secondary btn-block" %>
+          <% else %>
+            <%= form_for @room do |f| %>
+              <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, :value=> user.id %>
+              <% end %>
+              <%= f.submit "チャットを始める", class: "btn btn-secondary btn-block" %>
+            <% end %>
+          <% end %>
+        <% end %>

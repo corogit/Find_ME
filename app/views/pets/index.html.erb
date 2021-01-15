@@ -4,8 +4,6 @@
       <%= render 'pets/user', user: current_user %>
     </div>
 
-
-
     <div class="col-lg-8 offset-lg-1">
       <h2 class="heading">飼い主さんを募集中</h2>
        <p class="pet-count">全<%= @pets.count %>件</p>
@@ -19,9 +17,7 @@
             <p>性別: <%= pet.gender %></p>
             <p>お誕生日: <%= pet.birthday %></p>
             <p>投稿者:
-
               <%= attachment_image_tag pet.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %>
-
             </p>
             <div class="favorite-btn<%= pet.id %>">
               <%= render 'favorites/favorite', pet: pet %>

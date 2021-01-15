@@ -25,6 +25,8 @@ class PetsController < ApplicationController
     @user = current_user
     @comment = Comment.new
     @comments = Comment.all
+    
+    
   end
   
   def edit
