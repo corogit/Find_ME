@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row mt-5 ml-5">
+    <h2 class="heading">プロフィール編集</h2>
+  </div>
+
+
+  <%= form_with model: @user, local: true do |f| %>
+
+  <div class="row">
+    <div class="form-group">
+      <div class="col-xs-3">
+        <%= f.label :profile_image, "プロフィール画像" %>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
+      </div>
+      <div class="col-xs-4">
+         <%= f.attachment_field :profile_image %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <div class="col-xs-3">
+        <span><b>名前</b></span>
+      </div>
+
+      <div class="col-xs-4">
+        <%= f.text_field :last_name, autofocus: true, placeholder: "(例)山田", style: "margin-bottom: 10px;" %>
+        <%= f.label :last_name, "(姓)", style: "float: left;" %>
+
+      </div>
+
+      <div class="col-xs-4">
+        <%= f.text_field :first_name, placeholder: "(例)太郎" %>
+        <%= f.label :first_name, "(名)", style: "float: left;" %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="form-group">
+      <div class="col-xs-3">
+        <span><b>フリガナ</b></span>
+      </div>
+
+      <div class="col-xs-4">
+        <%= f.text_field :last_name_kana, autofocus: true, placeholder: "(例)ヤマダ", autocomplete: "last_name_kana", style: "margin-bottom: 10px;" %>
+        <%= f.label :last_name_kana, "(セイ)", style: "float: left;" %>
+      </div>
+
+      <div class="col-xs-4">
+        <%= f.text_field :first_name_kana, placeholder: "(例)タロウ", autocomplete: "first_name_kana" %>
+        <%= f.label :first_name_kana, "(メイ)", style: "float: left;" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <div class="col-xs-3">
+        <%= f.label :introduction, "紹介文" %>
+      </div>
+      <div class="col-xs-4">
+        <%= f.text_area :introduction, placeholder: "(例)初めまして。", autocomplete: "introduction" %>
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit "変更を保存" %>
+
+   <% end %>
+   
+   <%= link_to "退会する", user_unsubscribe_path(@user.id) %>
+</div>
