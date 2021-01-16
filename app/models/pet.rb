@@ -11,6 +11,6 @@ class Pet < ApplicationRecord
   
   attachment :image
   
-  
+
  
 end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @pets = @user.pets.page(params[:page]).per(1)
     @comment = Comment.new
     @comments = Comment.all
-   
+  
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
@@ -21,13 +21,15 @@ class UsersController < ApplicationController
           end
         end
       end
-
+    
+  
       unless @isRoom
         @room = Room.new
         @entry = Entry.new
       end
     end
-  end 
+  end
+
 
 
   def edit

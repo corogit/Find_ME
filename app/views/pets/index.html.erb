@@ -1,9 +1,10 @@
 <div class='container'>
   <div class='row mt-5'>
+    <% if user_signed_in? %>
     <div class="col-lg-3">
       <%= render 'pets/user', user: current_user %>
     </div>
-
+    <% end %>
     <div class="col-lg-8 offset-lg-1">
       
 
@@ -21,10 +22,13 @@
             <p>投稿者:
               <%= attachment_image_tag pet.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %>
             </p>
+            
+            <% if user_signed_in? %>
             <div class="favorite-btn<%= pet.id %>">
               <%= render 'favorites/favorite', pet: pet %>
             </div>
             <p>コメント件数：<%= pet.comments.count %></p>
+            <% end %>
           </div>
         <% end %>
         </div>

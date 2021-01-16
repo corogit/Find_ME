@@ -23,12 +23,14 @@
             <%= attachment_image_tag @pet.user, :profile_image, size: "60x60", format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
           <% end %>
         </p>
+        <% if user_signed_in? %>
         <div class="favorite-btn<%= @pet.id %>">
           <%= render 'favorites/favorite', pet: @pet %>
         </div>
         <div class="comments_<%= @pet.id %>">
           <%= render 'comments/comment', pet: @pet, comment: @comment %>
         </div>
+        <% end %>
         <br>
         <%= link_to "編集する", edit_pet_path(@pet.id),  class: "btn btn-secondary" %>
       </div>
