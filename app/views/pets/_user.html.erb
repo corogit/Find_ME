@@ -6,13 +6,7 @@
         <tr></tr>
         <tr>
             <th>名前</th>
-            <th><% if user == current_user %>
-                    <%= user.full_name %>
-                <% else %>
-                    <%= link_to user_path(user.id) do %>
-                        <%= user.full_name %>
-                    <% end %>
-                <% end %></th>
+            <th><%= user.full_name %></th>
             <th></th>
         </tr>
         <tr>
@@ -21,13 +15,13 @@
             <th></th>
         </tr>
         <tr>
-            <th>フォロー</th>
-            <td><%= link_to user.followings.count, followings_user_path(user.id) %>人</td>
+            <th><%= link_to "フォロー", followings_user_path(user.id) %></th>
+            <td><%= user.followings.count %>人</td>
             <th></th>
         </tr>
         <tr>
-            <th>フォロワー</th>
-            <td><%= link_to user.followers.count, followers_user_path(user.id) %>人</td>
+            <th><%= link_to "フォロワー", followers_user_path(user.id) %></th>
+            <td><%= user.followers.count %>人</td>
             <th></th>
         </tr>
     </tbody>

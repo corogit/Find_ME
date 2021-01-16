@@ -2,6 +2,8 @@
   <div class="row">
     <div class="col-lg-12 col-sm-12 text-center mt-4">
       <%= form_with model: @pet, url: pet_path, method: :put, local: true do |f| %>
+      <%= attachment_image_tag @pet, :image, format: "jpg", size: "200x200", fallback: "no_image.jpg", class: "rounded mt-4" %>
+       <%= f.attachment_field :image, size: "300x300" %>
         <table class="table table-borderless">
           <tr>
             <td><%= f.label :"お名前" %></td>
@@ -10,7 +12,7 @@
           <tr>
             <td><%= f.label :"ジャンル" %></td>
             <td><%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "-- 選択してください--") %></td>
-            <td><%= link_to "新ジャンル追加", genres_path %></td>
+            <td><%= link_to "新ジャンル追加", genres_path, class: "btn btn-secondary" %></td>
           </tr>
           <tr>
             <td><%= f.label :"お誕生日" %></td>
@@ -33,7 +35,7 @@
   <div class='row'>
     <div class="col-lg-12 col-sm-12 text-center mt-4">
       
-      <%= link_to "削除する", pet_path(@pet), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <%= link_to "削除する", pet_path(@pet), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
     </div>
   </div>
 </div>

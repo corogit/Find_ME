@@ -10,4 +10,7 @@ class Pet < ApplicationRecord
   end
   
   attachment :image
+  
+
+ 
 end

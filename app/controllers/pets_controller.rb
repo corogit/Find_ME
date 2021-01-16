@@ -17,7 +17,8 @@ class PetsController < ApplicationController
   end
 
   def index
-    @pets = Pet.all
+    @genres = Genre.all
+    @pets = Pet.page(params[:page]).reverse_order
   end
 
   def show
@@ -25,8 +26,6 @@ class PetsController < ApplicationController
     @user = current_user
     @comment = Comment.new
     @comments = Comment.all
-    
-    
   end
   
   def edit
@@ -48,6 +47,13 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.destroy
     redirect_to pets_path
+  end
+
+  def search
+    #カテゴリー検索
+    @genre = Genre.find(params[:id])
+    @genres = Genre.all
+    @pets = @genre.pets
   end
   
   private

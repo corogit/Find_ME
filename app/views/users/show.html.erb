@@ -18,7 +18,7 @@
       <% @pets.each do |pet| %>
         <div class="p-list">
           <%= link_to pet_path(pet.id) do %>
-            <%= attachment_image_tag pet, :image, format: "jpg", size: "300x300", fallback: "no_image.jpg", class: "rounded" %>
+            <%= attachment_image_tag pet, :image, format: "jpg", size: "300x300", fallback: "no_image.jpg", class: "rounded mt-4" %>
           <% end %>
           <p class="pet-name">お名前: 
             <%= link_to pet_path(pet.id) do %>
@@ -34,7 +34,7 @@
           <%= render 'comments/comment', pet: pet, comment: @comment %>
         </div>
       <% end %>
-    
+      <%= paginate @pets %>
     </div>
   </div>
 </div>

@@ -21,16 +21,22 @@
   box-sizing: border-box;
 }
 
-
-
 header {
   width: 100%;
   background-color: #CC9999	;
-  margin-top: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
+.nav-item {
+  padding-right: 20px;
+}
 
+.main {
+  width: 100%;
+  padding-bottom: 60px;
+}
 
 body {
   height: 100%;
@@ -42,14 +48,12 @@ body {
   padding: 0 0 1px 0;
 }
 
-
-
 footer{
   position: absolute;/*←絶対位置*/
   bottom: 0; /*下に固定*/
   width: 100%;
   height: auto;
-  background-color: #D2B48C;
+  background-color: #CC9999;
   text-align: center;
   margin-top: auto;
   margin-bottom: 0;

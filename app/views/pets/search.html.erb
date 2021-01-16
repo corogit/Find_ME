@@ -1,4 +1,5 @@
-<div class='container'>
+
+ <div class='container'>
   <div class='row mt-5'>
     <% if user_signed_in? %>
     <div class="col-lg-3">
@@ -22,7 +23,6 @@
             <p>投稿者:
               <%= attachment_image_tag pet.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %>
             </p>
-            
             <% if user_signed_in? %>
             <div class="favorite-btn<%= pet.id %>">
               <%= render 'favorites/favorite', pet: pet %>
@@ -32,7 +32,9 @@
           </div>
         <% end %>
         </div>
-        <%= paginate @pets %>
+      
       </div>
     </div>
   </div>
+
+   
