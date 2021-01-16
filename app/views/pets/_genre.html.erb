@@ -1,0 +1,12 @@
+
+<div>ジャンル検索→
+  <%= link_to pets_path do %>
+    全て見る
+  <% end %>
+  
+  <% genres.each do |genre| %>
+    <%= link_to search_path(id: genre.id) do %>
+      <%= genre.name %>
+    <% end %>
+  <% end %>
+</div>

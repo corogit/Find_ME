@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @pets = @user.pets
+    @pets = @user.pets.page(params[:page]).per(1)
     @comment = Comment.new
     @comments = Comment.all
    
