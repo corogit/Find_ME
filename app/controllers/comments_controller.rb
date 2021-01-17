@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  
   def create
     @pet = Pet.find(params[:pet_id])
     comment = Comment.new(comment_params)
@@ -20,5 +19,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment)
   end
-  
 end
