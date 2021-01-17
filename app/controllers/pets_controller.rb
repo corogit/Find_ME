@@ -1,4 +1,5 @@
 class PetsController < ApplicationController
+  before_action :ensure_correct_user, only:[:edit, :update, :destroy]
   
   def new
     @pet = Pet.new
@@ -57,6 +58,13 @@ class PetsController < ApplicationController
   end
   
   private
+  
+  def ensure_correct_user
+    @pet = Pet.find(params[:id])
+    unless @pet.user == current_user
+      redirect_to pets_path
+    end
+  end
 
   def pet_params
     params.require(:pet).permit(:name, :image, :birthday, :gender, :introduction, :genre_id)

@@ -32,7 +32,9 @@
         </div>
         <% end %>
         <br>
-        <%= link_to "編集する", edit_pet_path(@pet.id),  class: "btn btn-secondary" %>
+        <% if @pet.user == current_user %>
+          <%= link_to "編集する", edit_pet_path(@pet.id),  class: "btn btn-secondary" %>
+        <% end %>
       </div>
     </div>
   </div>
