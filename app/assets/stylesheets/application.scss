@@ -24,25 +24,49 @@
 
 header {
   width: 100%;
-  background-color: #EEEEEE;
-  margin: 0 auto;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-top: 0px;
+  z-index: 9999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  height: 100px;
+}
+
+
+
+.heading {
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.heading-user {
+  padding-top: 20px;
+  text-align: center;
 }
 
 #logo-head {
   margin-top: 0;
 }
 
+.welcome {
+  padding-top: 33px;
+  padding-left: 25px;
+}
+
 .nav-item {
   padding-top: 25px;
-  padding-right: 20px;
+  padding-left: 25px;
+}
+
+.nav-item1 {
+  padding-top: 25px;
+  margin-left: 400px;
 }
 
 .main {
   width: 100%;
   padding-bottom: 60px;
+  padding-top: 100px;
 }
 
 body {
@@ -69,13 +93,13 @@ footer{
 
 .main-visual {
   background-image: image-url("top-dog.jpeg");
-  height: 500px;
-  background-size:cover;
+  height: 600px;
+  background-size: cover;
 }
 
 .main-visual-content {
   width: 77%;
-  height: 500px;
+  height: 600px;
   background-color: rgba( 0, 0, 0, 0.2);
 }
 .visual-text {
@@ -86,5 +110,90 @@ footer{
 .about-visual {
   background-image: image-url("dog&cat.jpg");
   height: 500px;
-  background-size:cover;
+  background-size: cover;
+}
+
+.col-lg-3 {
+  position: fixed;
+}
+
+.col-lg-8 {
+  margin-left: 400px;
+}
+.side-bar {
+  background-color: #F2F2F2;
+　position: sticky;
+　top: 0px;
+}
+
+.top-content {
+  display: flex;
+  justify-content: center;
+
+}
+
+.content {
+  width: 650px;
+  height: 300px;
+}
+
+.content-heading {
+  padding-top: 120px;
+  padding-left: 10px;
+  font-size: 40px;
+  font-family: 'IM Fell DW Pica SC', serif;
+}
+
+.content-p {
+  padding-left: 130px;
+}
+
+.content-text {
+  width: 240px;
+  height: 300px;
+}
+
+.content-text p {
+  padding-top: 150px;
+  font-size: 15px;
+}
+
+.about-content1 {
+  width: 30%;
+  height: 400px;
+  padding: 0 30px;
+  border-right:1px solid #ccc;
+}
+.about-content2 {
+  width: 30%;
+  height: 400px;
+  padding: 0 30px;
+  border-right:1px solid #ccc;
+}
+.about-content3 {
+  width: 30%;
+  height: 400px;
+  padding: 0 30px;
+}
+
+.about-heading1 {
+  font-size: 23px;
+}
+
+.about-heading {
+  font-size: 23px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.about {
+  font-size: 40px;
+  text-align: center;
+  font-family: 'IM Fell DW Pica SC', serif;
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+.pet-count {
+  text-align: center;
 }

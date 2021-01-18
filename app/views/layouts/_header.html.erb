@@ -1,4 +1,4 @@
-<header>
+<header class="header">
   <nav class="navbar navbar-expand-lg navbar-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,7 @@
         <% end %>
 
         <% if user_signed_in? %>
-          <li class="nav-item"> ようこそ、<strong><%= current_user.last_name %> <%= current_user.first_name %></strong> さん！</li>
+          <p class="welcome"> ようこそ、<strong><%= current_user.last_name %> <%= current_user.first_name %></strong> さん！</p>
           <li class="nav-item">
             <%= link_to "TOP", root_path, class: 'btn' %>
           </li><br>
@@ -31,18 +31,18 @@
           </li>
 
         <% else %>
-          <li class="nav-item">
+          <li class="nav-item1">
             <%= link_to "TOP", root_path, class: 'btn' %>
-          </li>
+          </li><br>
           <li class="nav-item">
-            <%= link_to "About", about_path, class: 'btn' %>
-          </li>
+            <%= link_to "ABOUT", about_path, class: 'btn' %>
+          </li><br>
           <li class="nav-item">
             <%= link_to "飼い主さん募集中の動物たち", pets_path, class: 'btn' %>
-          </li>
+          </li><br>
           <li class="nav-item">
             <%= link_to "登録する", new_user_registration_path, class: 'btn' %>
-          </li>
+          </li><br>
           <li class="nav-item">
             <%= link_to "ログイン", new_user_session_path, class: 'btn' %>
           </li>

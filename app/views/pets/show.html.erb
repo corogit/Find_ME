@@ -19,9 +19,13 @@
             <p>新しいおうちが見つかったよ！</p>
           <% end %>
         <p>投稿者:
+        <% if user_signed_in? %>
           <%= link_to user_path(@pet.user) do %>
             <%= attachment_image_tag @pet.user, :profile_image, size: "60x60", format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
           <% end %>
+        <% else %>
+          <%= attachment_image_tag @pet.user, :profile_image, size: "60x60", format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
+        <% end %>
         </p>
         <% if user_signed_in? %>
         <div class="favorite-btn<%= @pet.id %>">

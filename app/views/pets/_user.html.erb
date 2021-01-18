@@ -1,5 +1,7 @@
-<h2>ユーザー情報</h2>
+<div class="side-bar">
+<h2 class="heading-user">
 <%= attachment_image_tag user, :profile_image, size: '100x100', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
+</h2>
 <table class='table'>
     <tbody>
         <tr></tr>
@@ -9,7 +11,7 @@
             <th></th>
         </tr>
         <tr>
-            <th>紹介文</th>
+            <th>ひとこと</th>
             <th><%= user.introduction %></th>
             <th></th>
         </tr>
@@ -34,8 +36,8 @@
   <br>
 <% end %>
 <% unless user.id == current_user.id %>
-  <% if @isRoom == true %>
-    <%= link_to "DMを送る", room_path(@roomId), class: "btn btn-outline-secondary btn-block" %>
+  <% if @is_room == true %>
+    <%= link_to "DMを送る", room_path(@room_id), class: "btn btn-outline-secondary btn-block" %>
   <% else %>
     <%= form_for @room do |f| %>
       <%= fields_for @entry do |e| %>
@@ -45,3 +47,4 @@
     <% end %>
   <% end %>
 <% end %>
+</div>

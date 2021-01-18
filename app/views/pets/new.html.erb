@@ -4,7 +4,7 @@
       <%= render 'pets/user', user: current_user %>
     </div>
     <div class="col-lg-8 offset-lg-1">
-      <h2 class="heading">新規投稿フォーム</h2>
+      <h2 class="heading">飼い主さんを募集する</h2>
       <%= render 'layouts/error_messages', model: @pet %>
       <%= form_with model: @pet, url: pets_path, method: :post, local: true do |f| %>
         <%= f.attachment_field :image, size: "300x300" %>
