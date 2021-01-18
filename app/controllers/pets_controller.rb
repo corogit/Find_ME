@@ -1,5 +1,6 @@
 class PetsController < ApplicationController
-  
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
   def new
     @pet = Pet.new
     @genres = Genre.all
@@ -27,12 +28,12 @@ class PetsController < ApplicationController
     @comment = Comment.new
     @comments = Comment.all
   end
-  
+
   def edit
     @pet = Pet.find(params[:id])
     @genres = Genre.all
   end
-  
+
   def update
     @pet = Pet.find(params[:id])
     if @pet.update(pet_params)
@@ -50,16 +51,22 @@ class PetsController < ApplicationController
   end
 
   def search
-    #カテゴリー検索
+    # カテゴリー検索
     @genre = Genre.find(params[:id])
     @genres = Genre.all
     @pets = @genre.pets
   end
-  
+
   private
+
+  def ensure_correct_user
+    @pet = Pet.find(params[:id])
+    unless @pet.user == current_user
+      redirect_to pets_path
+    end
+  end
 
   def pet_params
     params.require(:pet).permit(:name, :image, :birthday, :gender, :introduction, :genre_id)
   end
-
 end

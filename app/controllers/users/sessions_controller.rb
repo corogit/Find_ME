@@ -19,13 +19,14 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  
   protected
 
   def reject_user
     @user = User.find_by(email: params[:user][:email].downcase)
     if @user
-      if (@user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false))
+      if @user.valid_password?(params[:user][:password]) && (
+        @user.active_for_authentication? == false
+      )
         flash[:error] = "退会済みです。"
         redirect_to new_user_session_path
       end
@@ -33,7 +34,6 @@ class Users::SessionsController < Devise::SessionsController
       flash[:error] = "必須項目を入力してください。"
     end
   end
-
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

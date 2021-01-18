@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   resources :users, only: [:show, :edit, :update]
-    get "user/:id/unsubscribe" => "users#unsubscribe", as: 'user_unsubscribe'
-    patch 'user/:id/withdraw' => 'users#withdraw', as: 'user_withdraw'
+  get "user/:id/unsubscribe" => "users#unsubscribe", as: 'user_unsubscribe'
+  patch 'user/:id/withdraw' => 'users#withdraw', as: 'user_withdraw'
 
-  resources :rooms, only: [:index, :create,:show]
+  resources :rooms, only: [:index, :create, :show]
 
   resources :genres
 
@@ -17,9 +17,8 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
-  
-  get "search" => "pets#search"
 
+  get "search" => "pets#search"
 
   resources :users do
     member do
@@ -27,5 +26,4 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
-
 end
