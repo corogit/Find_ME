@@ -51,13 +51,19 @@ class PetsController < ApplicationController
   end
 
   def search
-    # カテゴリー検索
-    @genre = Genre.find(params[:id])
-    @genres = Genre.all
-    @pets = @genre.pets
+    @search_params = pet_search_params  #検索結果の画面で、フォームに検索した値を表示するために、paramsの値をビューで使えるようにする
+    @pets = Pet.search(@search_params) #{.includes(:genre)}←なしで行けたよ？why  #Reservationモデルのsearchを呼び出し、引数としてparamsを渡している。
   end
 
   private
+
+  def pet_search_params
+    params.fetch(:search, {}).permit(:prefecture_id, :birthday_from, :birthday_to, :gender, :genre_id)
+    #fetch(:search, {})と記述することで、検索フォームに値がない場合はnilを返し、エラーが起こらなくなる
+    #ここでの:searchには、フォームから送られてくるparamsの値が入っている
+  end
+
+  # private
 
   def ensure_correct_user
     @pet = Pet.find(params[:id])
@@ -67,6 +73,7 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :image, :birthday, :gender, :introduction, :genre_id)
+    params.require(:pet).permit(:name, :image, :birthday, :gender, :introduction, :genre_id, :prefecture_id, :age)
   end
+
 end

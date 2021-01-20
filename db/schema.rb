@@ -56,11 +56,13 @@ ActiveRecord::Schema.define(version: 2021_01_13_023842) do
     t.integer "user_id"
     t.integer "genre_id"
     t.string "name"
-    t.string "birthday"
-    t.string "gender"
+    t.date "birthday"
+    t.integer "gender"
     t.string "introduction"
     t.string "image_id"
     t.boolean "is_active"
+    t.integer "prefecture_id"
+    t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

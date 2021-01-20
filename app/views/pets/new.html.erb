@@ -24,9 +24,19 @@
               <td><%= f.text_field :birthday, class: "form-control" %></td>
             </tr>
             <tr>
+              <td><%= f.label :"年齢" %></td>
+              <td><%= f.text_field :age, class: "form-control" %></td>
+            </tr>
+            <tr>
               <td><%= f.label :"性別" %></td>
-              <td><%= f.radio_button :gender,"男の子♂" %>男の子(♂)
-                  <%= f.radio_button :gender, "女の子♀" %>女の子(♀)</td>
+              <td><%= f.radio_button :gender, :男の子♂ %>
+                  <%= f.label :"男の子♂" %>
+                  <%= f.radio_button :gender, :女の子♀ %>
+                  <%= f.label :"女の子♀"%></td>
+            </tr>
+            <tr>
+              <td><%= f.label :"都道府県" %></td>
+              <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "-- 選択してください--" %></td>
             </tr>
             <tr>
                 <td><%= f.label :"紹介" %></td>
