@@ -10,7 +10,9 @@
         <p>ジャンル: <%= @pet.genre.name %></p>
         <p>お名前: <%= @pet.name %></p>
         <p>お誕生日: <%= @pet.birthday %></p>
+        <p>年齢: <%= @pet.age %>才</p>
         <p>性別: <%= @pet.gender %></p>
+        <p>都道府県: <%= @pet.prefecture.name %></p>
         <p>特徴: <%= @pet.introduction %></p>
         <p>ステータス:
           <% if @pet.is_active == true %>
