@@ -1,0 +1,12 @@
+<h2 class="heading">DM一覧</h2>
+<% @rooms.each do |room| %>
+  <%= link_to room_path(room.id) do %>
+    <%= room.name %>
+    <%= room.users.name %>
+    <%= room.entries.ids %>
+
+  <% end %>
+  <% @another_user = (room.users.where.not(id: current_user.id).to_a)[0] %>
+  <%= link_to @another_user, room_path(room) %>
+
+<% end %>

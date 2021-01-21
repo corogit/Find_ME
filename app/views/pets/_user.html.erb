@@ -34,6 +34,7 @@
 <% if @user == current_user %>
   <%= link_to "編集", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog"%>
   <br>
+  <%= link_to "DM", rooms_path, class: "btn btn-outline-secondary btn-block" %>
 <% end %>
 <% unless user.id == current_user.id %>
   <% if @is_room == true %>
