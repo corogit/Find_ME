@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="current_user" data-id="<%=current_user.id%>">
   <div class="row mt-5">
     <div class="col-lg-12">
       <h2 class="heading">ダイレクトメッセージ</h2>
@@ -11,27 +11,12 @@
       <div id="chats">
         <div id="messages" data-room_id="<%= @room.id %>">
           <% @messages.each do |message| %>
-            <% if message.user_id == current_user.id%>
-            <div class="mycomment">
-              <%= render 'messages/message', message: message %>
-            </div>
-            <% else %>
-            <div class="fukidasi">
-              <div class="faceicon">
-                <%= attachment_image_tag message.user, :profile_image, fallback: "no_image_icon.jpg" %>
-              </div>
-              <div class="chatting">
-                <div class="says">
-                  <%= render 'messages/message', message: message %>
-                </div>
-              </div>
-            </div>
-            <% end %>
+            <%= render 'messages/message', message: message %>
           <% end %>
+        </div>
           <form>
             <input type="text" id="chat-input" data-behavior="room_speaker", class="form-control">
           </form>
-        </div>
       </div>
     </div>
   </div>

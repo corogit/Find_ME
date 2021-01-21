@@ -1,3 +1,24 @@
-
-<%= simple_format message.message %><br>
-<%= message.created_at.strftime('%Y/%m/%d') %>
+<div class="mycomment" id="mycomment-<%=message.id%>" style="display:none">
+  <%= simple_format message.message %><br>
+  <%= message.created_at.strftime('%Y/%m/%d') %>
+</div>
+<div class="fukidasi" id="fukidasi-<%=message.id%>" style="display:none">
+  <div class="faceicon">
+    <%= attachment_image_tag message.user, :profile_image, fallback: "no_image_icon.jpg" %>
+  </div>
+  <div class="chatting">
+    <div class="says">
+      <%= simple_format message.message %><br>
+      <%= message.created_at.strftime('%Y/%m/%d') %>
+    </div>
+  </div>
+</div>
+<script>
+  var direct_message = "<%= message.user_id %>";
+  var dm_user = $("#current_user").attr("data-id");
+  if (direct_message == dm_user){
+    $("#mycomment-<%=message.id%>").show();
+  }else{
+    $("#fukidasi-<%=message.id%>").show();
+  }
+</script>

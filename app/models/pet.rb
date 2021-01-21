@@ -8,6 +8,7 @@ class Pet < ApplicationRecord
   validates :name, presence: true
   validates :birthday, presence: true
   validates :gender, presence: true
+  validates :introduction, length: { maximum: 200 }
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
