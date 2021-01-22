@@ -19,7 +19,7 @@ describe 'Petモデルのテスト', type: :model do
     context 'introductionカラム' do
       it '空欄でないこと' do
         pet.introduction = ''
-        is_expected.to eq false
+        is_expected.to eq true
       end
       it '200文字以下であること: 200文字は〇' do
         pet.introduction = Faker::Lorem.characters(number: 200)

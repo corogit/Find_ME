@@ -32,12 +32,17 @@
             <tbody style="padding-bottom: 100px">
                 <% @genres.each do |genre| %>
                     <tr>
-                        <% if genre.is_active == true %>
+                        <%# if genre.is_active == true %>
                             <td><%= genre.name %></td>
-                            <td>取り扱い中</td>
+                            <td><% if genre.is_active == true %>
+                                取り扱い中
+                                <% elsif genre.is_active == false %>
+                                現在取り扱っておりません
+                                <% end %>
+                            </td>
                             <td><%= link_to "編集する", edit_genre_path(genre.id), class: "btn btn-secondary" %>
                                 <%= link_to "削除する", genre_path(genre.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
-                        <% end %>
+                        <%# end %>
                     </tr>
                 <% end %>
             </tbody>
