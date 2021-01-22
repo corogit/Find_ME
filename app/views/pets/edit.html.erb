@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12 col-sm-12 text-center mt-4">
+      <h2 class="heading">投稿内容編集</h2>
       <%= render 'layouts/error_messages', model: @pet %>
       <%= form_with model: @pet, url: pet_path, method: :put, local: true do |f| %>
       <%= attachment_image_tag @pet, :image, format: "jpg", size: "200x200", fallback: "no_image.jpg", class: "rounded mt-4" %>
@@ -20,14 +21,26 @@
             <td><%= f.text_field :birthday, class: "form-control" %></td>
           </tr>
           <tr>
+            <td><%= f.label :"年齢" %></td>
+            <td><%= f.text_field :age, class: "form-control" %></td>
+          </tr>
+          <tr>
             <td><%= f.label :"性別" %></td>
             <td><%= f.radio_button :gender,"男の子♂" %>男の子(♂)<span></span>
                 <%= f.radio_button :gender, "女の子♀" %>女の子(♀)</td>
           </tr>
           <tr>
+            <td><%= f.label :"都道府県" %></td>
+            <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "-- 選択してください--" %></td>
+            </tr>
+          <tr>
             <td><%= f.label :"紹介" %></td>
             <td><%= f.text_area :introduction, class: "form-control" %></td>
           </tr>
+          <tr>
+            <td><%= f.label :"販売ステータス" %></td>
+            <td><%= f.select :is_active, [['募集中', true], ['新しいおうちが見つかったよ！', false]], prompt: "-- 選択してください --"  %></td>
+            </tr>
         </table>
         <%= f.submit "更新する", class: "btn btn-secondary" %>
       <% end %>

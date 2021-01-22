@@ -14,12 +14,12 @@
         <p>性別: <%= @pet.gender %></p>
         <p>都道府県: <%= @pet.prefecture.name %></p>
         <p>特徴: <%= @pet.introduction %></p>
-        <p>ステータス:
+        <p>ステータス: 
           <% if @pet.is_active == true %>
-            <p>募集中<p>
+            飼い主さん募集中
           <% elsif @pet.is_active == false %>
-            <p>新しいおうちが見つかったよ！</p>
-          <% end %>
+            新しいおうちが見つかったよ！
+          <% end %></p>
         <p>投稿者:
         <% if user_signed_in? %>
           <%= link_to user_path(@pet.user) do %>

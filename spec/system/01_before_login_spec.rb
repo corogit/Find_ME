@@ -12,22 +12,6 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/'
       end
-      it 'Log inリンクが表示される: 左上から5番目のリンクが「ログイン」である' do
-        log_in_link = find_all('a')[5].native.inner_text
-        expect(log_in_link).to match(/log in/i)
-      end
-      it 'Log inリンクの内容が正しい' do
-        log_in_link = find_all('a')[5].native.inner_text
-        expect(page).to have_link log_in_link, href: new_user_session_path
-      end
-      it 'Sign Upリンクが表示される: 左上から4番目のリンクが「登録する」である' do
-        sign_up_link = find_all('a')[4].native.inner_text
-        expect(sign_up_link).to match(/sign up/i)
-      end
-      it 'Sign Upリンクの内容が正しい' do
-        sign_up_link = find_all('a')[4].native.inner_text
-        expect(page).to have_link sign_up_link, href: new_user_registration_path
-      end
     end
   end
 
@@ -52,21 +36,25 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'タイトルが表示される' do
         expect(page).to have_content 'Find ME'
       end
-      it 'Homeリンクが表示される: 左上から1番目のリンクが「TOP」である' do
+      it 'TOPリンクが表示される: 左上から1番目のリンクが「TOP」である' do
         top_link = find_all('a')[1].native.inner_text
-        expect(top_link).to match(//i)
+        expect(top_link).to eq("TOP")
       end
-      it 'Aboutリンクが表示される: 左上から2番目のリンクが「ABOUT」である' do
+      it 'ABOUTリンクが表示される: 左上から2番目のリンクが「ABOUT」である' do
         about_link = find_all('a')[2].native.inner_text
-        expect(about_link).to match(/about/i)
+        expect(about_link).to eq("ABOUT")
       end
-      it 'sign upリンクが表示される: 左上から3番目のリンクが「sign up」である' do
-        signup_link = find_all('a')[3].native.inner_text
-        expect(signup_link).to match(/sign up/i)
+      it '飼い主さん募集中の動物たちリンクが表示される: 左上から3番目のリンクが「飼い主さん募集中の動物たち」である' do
+        pets_link = find_all('a')[3].native.inner_text
+        expect(pets_link).to eq("飼い主さん募集中の動物たち")
       end
-      it 'loginリンクが表示される: 左上から4番目のリンクが「login」である' do
-        login_link = find_all('a')[4].native.inner_text
-        expect(login_link).to match(/login/i)
+        it '登録するリンクが表示される: 左上から4番目のリンクが「登録する」である' do
+        sign_up_link = find_all('a')[4].native.inner_text
+        expect(sign_up_link).to eq("登録する")
+      end
+        it 'ログインリンクが表示される: 左上から5番目のリンクが「ログイン」である' do
+        log_in_link = find_all('a')[5].native.inner_text
+        expect(log_in_link).to eq("ログイン")
       end
     end
 
@@ -75,7 +63,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
 
       it 'TOPを押すと、トップ画面に遷移する' do
         top_link = find_all('a')[1].native.inner_text
-        top_link = home_link.delete(' ')
+        top_link = top_link.delete(' ')
         top_link.gsub!(/\n/, '')
         click_link top_link
         is_expected.to eq '/'
@@ -86,14 +74,20 @@ describe '[STEP1] ユーザログイン前のテスト' do
         click_link about_link
         is_expected.to eq '/about'
       end
-      it 'sign upを押すと、新規登録画面に遷移する' do
-        signup_link = find_all('a')[3].native.inner_text
+      it '飼い主さん募集中の動物たちを押すと、ペット一覧画面に遷移する' do
+        pets_link = find_all('a')[3].native.inner_text
+        pets_link = pets_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link pets_link
+        is_expected.to eq '/pets'
+      end
+      it '登録するを押すと、新規登録画面に遷移する' do
+        signup_link = find_all('a')[4].native.inner_text
         signup_link = signup_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link signup_link
         is_expected.to eq '/users/sign_up'
       end
-      it 'loginを押すと、ログイン画面に遷移する' do
-        login_link = find_all('a')[4].native.inner_text
+      it 'ログインを押すと、ログイン画面に遷移する' do
+        login_link = find_all('a')[5].native.inner_text
         login_link = login_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link login_link
         is_expected.to eq '/users/sign_in'
@@ -110,11 +104,29 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/sign_up'
       end
-      it '「Sign up」と表示される' do
-        expect(page).to have_content 'Sign up'
+      it '「新規登録」と表示される' do
+        expect(page).to have_content '新規登録'
       end
-      it 'nameフォームが表示される' do
-        expect(page).to have_field 'user[name]'
+      it 'last_nameフォームが表示される' do
+        expect(page).to have_field 'user[last_name]'
+      end
+       it 'first_nameフォームが表示される' do
+        expect(page).to have_field 'user[first_name]'
+      end
+       it 'last_name_kanaフォームが表示される' do
+        expect(page).to have_field 'user[last_name_kana]'
+      end
+       it 'first_name_kanaフォームが表示される' do
+        expect(page).to have_field 'user[first_name_kana]'
+      end
+       it 'zipcodeフォームが表示される' do
+        expect(page).to have_field 'user[zipcode]'
+      end
+       it 'addressフォームが表示される' do
+        expect(page).to have_field 'user[address]'
+      end
+       it 'phone_numberフォームが表示される' do
+        expect(page).to have_field 'user[phone_number]'
       end
       it 'emailフォームが表示される' do
         expect(page).to have_field 'user[email]'
@@ -132,7 +144,13 @@ describe '[STEP1] ユーザログイン前のテスト' do
 
     context '新規登録成功のテスト' do
       before do
-        fill_in 'user[name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[last_name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[first_name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[last_name_kana]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[first_name_kana]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[zipcode]', with: Faker::Lorem.characters(number: 7)
+        fill_in 'user[address]', with: Faker::Lorem.characters(number: 20)
+        fill_in 'user[phone_number]', with: Faker::Lorem.characters(number: 11)
         fill_in 'user[email]', with: Faker::Internet.email
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
@@ -159,11 +177,11 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/sign_in'
       end
-      it '「Log in」と表示される' do
-        expect(page).to have_content 'Log in'
+      it '「ログイン」と表示される' do
+        expect(page).to have_content 'ログイン'
       end
-      it 'nameフォームが表示される' do
-        expect(page).to have_field 'user[name]'
+      it 'emailフォームが表示される' do
+        expect(page).to have_field 'user[email]'
       end
       it 'passwordフォームが表示される' do
         expect(page).to have_field 'user[password]'
@@ -171,14 +189,11 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'Sign upボタンが表示される' do
         expect(page).to have_button 'Log in'
       end
-      it 'emailフォームは表示されない' do
-        expect(page).not_to have_field 'user[email]'
-      end
     end
 
     context 'ログイン成功のテスト' do
       before do
-        fill_in 'user[name]', with: user.name
+        fill_in 'user[email]', with: user.email
         fill_in 'user[password]', with: user.password
         click_button 'Log in'
       end
@@ -190,7 +205,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
 
     context 'ログイン失敗のテスト' do
       before do
-        fill_in 'user[name]', with: ''
+        fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
         click_button 'Log in'
       end
@@ -206,30 +221,35 @@ describe '[STEP1] ユーザログイン前のテスト' do
 
     before do
       visit new_user_session_path
-      fill_in 'user[name]', with: user.name
+      fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'Log in'
     end
 
     context 'ヘッダーの表示を確認' do
-      it 'タイトルが表示される' do
-        expect(page).to have_content 'Find ME'
-      end
       it 'TOPリンクが表示される: 左上から1番目のリンクが「TOP」である' do
         top_link = find_all('a')[1].native.inner_text
-        expect(top_link).to match(//i)
+        expect(top_link).to eq("TOP")
       end
       it 'マイページリンクが表示される: 左上から2番目のリンクが「マイページ」である' do
         users_link = find_all('a')[2].native.inner_text
-        expect(users_link).to match(/users/i)
+        expect(users_link).to eq("マイページ")
       end
-      it '飼い主さん募集の動物たちリンクが表示される: 左上から3番目のリンクが「飼い主さん募集の動物たち」である' do
+      it '飼い主さん募集中の動物たちリンクが表示される: 左上から3番目のリンクが「飼い主さん募集中の動物たち」である' do
         pets_link = find_all('a')[3].native.inner_text
-        expect(pets_link).to match(/pets/i)
+        expect(pets_link).to eq("飼い主さん募集中の動物たち")
+      end
+      it '投稿フォームリンクが表示される: 左上から4番目のリンクが「投稿フォーム」である' do
+        pets_new_link = find_all('a')[4].native.inner_text
+        expect(pets_new_link).to eq("投稿フォーム")
+      end
+      it 'ABOUTリンクが表示される: 左上から5番目のリンクが「ABOUT」である' do
+        about_link = find_all('a')[5].native.inner_text
+        expect(about_link).to eq("ABOUT")
       end
       it 'ログアウトリンクが表示される: 左上から6番目のリンクが「ログアウト」である' do
         logout_link = find_all('a')[6].native.inner_text
-        expect(logout_link).to match(/logout/i)
+        expect(logout_link).to eq("ログアウト")
       end
     end
   end
@@ -239,7 +259,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
 
     before do
       visit new_user_session_path
-      fill_in 'user[name]', with: user.name
+      fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'Log in'
       logout_link = find_all('a')[6].native.inner_text

@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_023842) do
     t.integer "gender"
     t.string "introduction"
     t.string "image_id"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.integer "prefecture_id"
     t.integer "age"
     t.datetime "created_at", null: false
