@@ -5,9 +5,9 @@ FactoryBot.define do
     last_name_kana { Faker::Lorem.characters(number: 10) }
     first_name_kana { Faker::Lorem.characters(number: 10) }
     email { Faker::Internet.email }
-    address { Faker::Lorem.characters(number:30) }
-    zipcode { '6666666' }
-    phone_number { '0909999999' }
+    address { Faker::Lorem.characters(number: 20) }
+    zipcode { Faker::Lorem.characters(number: 7) }
+    phone_number { Faker::Lorem.characters(number: 11)}
     is_deleted { false }
     introduction { Faker::Lorem.characters(number: 20) }
     password { 'password' }
