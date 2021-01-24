@@ -1,31 +1,32 @@
 <div class="side-bar">
 <h2 class="heading-user">
-<%= attachment_image_tag user, :profile_image, size: '100x100', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
+
 </h2>
-<table class='table'>
+<table class='table table-borderless user-info'>
+  <thead>
     <tbody>
         <tr></tr>
         <tr>
-            <th>名前</th>
-            <th><%= user.full_name %></th>
-            <th></th>
+          <th><%= link_to user_path(user.id) do %>
+            <%= attachment_image_tag user, :profile_image, size: '100x100', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
+          <p><%= user.full_name %></p>
+          <% end %></th>
         </tr>
         <tr>
-            <th>ひとこと</th>
-            <th><%= user.introduction %></th>
-            <th></th>
+          <th><%= user.introduction %></th>
         </tr>
         <tr>
-            <th><%= link_to "フォロー", followings_user_path(user.id) %></th>
-            <td><%= user.followings.count %>人</td>
-            <th></th>
+          <th><%= link_to followings_user_path(user.id) do %>
+                <p>フォロー<%= user.followings.count %></p>
+              <% end %></th>
         </tr>
-        <tr>
-            <th><%= link_to "フォロワー", followers_user_path(user.id) %></th>
-            <td><%= user.followers.count %>人</td>
-            <th></th>
+        <tr>   
+          <th><%= link_to followers_user_path(user.id) do %>
+                <p>フォロワー<%= user.followers.count %></p>
+              <% end %></th>
         </tr>
     </tbody>
+  </thead>
 </table>
 <div id="follow_button">
   <%= render 'relationships/follow_button', user: user %>

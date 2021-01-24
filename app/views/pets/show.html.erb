@@ -1,53 +1,87 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col-lg-3">
-      <h2>ペット詳細</h2>
+    <div class="col-lg-6">
+      <h2 class="heading">ペット詳細</h2>
       <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
       <div id="slider">
           <% @pet.pet_images.each do |image| %>
-            <%= attachment_image_tag image, :image, size: '350x350', class: "rounded mt-4" %>
+            <%= attachment_image_tag image, :image %>
           <% end %>
       </div>
-    </div>
-     
-
-    <div class="col-lg-8 offset-lg-1">
-      <div class="pet.name mt-5 ml-5">
-        <p>ジャンル: <%= @pet.genre.name %></p>
-        <p>お名前: <%= @pet.name %></p>
-        <p>お誕生日: <%= @pet.birthday %></p>
-        <p>年齢: <%= @pet.age %>才</p>
-        <p>性別: <%= @pet.gender %></p>
-        <p>都道府県: <%= @pet.prefecture.name %></p>
-        <p>特徴: <%= @pet.introduction %></p>
-        <p>ステータス: 
-          <% if @pet.is_active == true %>
-            飼い主さん募集中
-          <% elsif @pet.is_active == false %>
-            新しいおうちが見つかったよ！
-          <% end %></p>
-        <p>投稿者:
-        <% if user_signed_in? %>
-          <%= link_to user_path(@pet.user) do %>
-            <%= attachment_image_tag @pet.user, :profile_image, size: "60x60", format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
-          <% end %>
-        <% else %>
-          <%= attachment_image_tag @pet.user, :profile_image, size: "60x60", format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
-        <% end %>
-        </p>
-        <% if user_signed_in? %>
-        <div class="favorite-btn<%= @pet.id %>">
-          <%= render 'favorites/favorite', pet: @pet %>
-        </div>
+      <div class="comments">
         <div class="comments_<%= @pet.id %>">
           <%= render 'comments/comment', pet: @pet, comment: @comment %>
         </div>
-        <% end %>
-        <br>
-        <% if @pet.user == current_user %>
-          <%= link_to "編集する", edit_pet_path(@pet.id),  class: "btn btn-secondary" %>
-        <% end %>
       </div>
+    </div>
+
+    <div class="col-lg-5 mt-5">
+      <table class="table table-borderless mt-5">
+        <thead>
+          <tr>
+            <th>ジャンル:</th>
+            <th><%= @pet.genre.name %></th>
+          </tr>
+          <tr>
+            <th>お名前:</th>
+            <th><%= @pet.name %></th>
+          </tr>
+          <tr>
+            <th>お誕生日: </th>
+            <th><%= @pet.birthday %></th>
+          </tr>
+          <tr>
+            <th>年齢: </th>
+            <th><%= @pet.age %>才</th>
+          </tr>
+          <tr>
+            <th>性別:</th>
+            <th><%= @pet.gender %></th>
+          </tr>
+          <tr>
+            <th>都道府県:</th>
+            <th><%= @pet.prefecture.name %></th>
+          </tr>
+          <tr>
+            <th>特徴:</th>
+            <th><%= @pet.introduction %></th>
+          </tr>
+          <tr>
+            <th>ステータス:</th>
+            <th><% if @pet.is_active == true %>
+                  飼い主さん募集中
+                <% elsif @pet.is_active == false %>
+                  新しいおうちが見つかったよ！
+                <% end %></th>
+          </tr>
+          <tr>
+            <th>投稿者:</th>
+            <th><% if user_signed_in? %>
+                  <%= link_to user_path(@pet.user) do %>
+                    <%= attachment_image_tag @pet.user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
+                  <% end %>
+                <% else %>
+                  <%= attachment_image_tag @pet.user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
+                <% end %></th>
+          </tr>
+          <% if user_signed_in? %>
+          <tr>
+            <th>検討したい！</th>
+            <th class="favorite-btn<%= @pet.id %>">
+              <%= render 'favorites/favorite', pet: @pet %></th>
+          </tr>
+          <% end %>
+          <tr>
+            <th></th>
+          </tr>
+          <tr>
+            <th></th>
+            <th><% if @pet.user == current_user %>
+                  <%= link_to "編集する", edit_pet_path(@pet.id),  class: "btn btn-outline-secondary" %>
+                <% end %>
+          </tr>
+        </thead>
+      </table>
     </div>
   </div>
 </div>

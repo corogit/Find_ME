@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :rooms, through: :entries
 
   attachment :profile_image
+  attachment :image
 
   has_many :relationships, foreign_key: "follower_id", class_name: "Relationship",
                            dependent: :destroy

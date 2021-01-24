@@ -35,11 +35,10 @@ header {
   height: 100px;
 }
 
-
-
 .heading {
   padding-bottom: 30px;
   text-align: center;
+  padding-top: 20px;
 }
 
 .heading-user {
@@ -83,11 +82,11 @@ body {
 }
 
 footer{
-  position: fixed;
+
   bottom: 0; /*下に固定*/
   width: 100%;
   height: auto;
-  background-color: #EEEEEE;
+  background-color: white;
   text-align: center;
   margin-top: auto;
   margin-bottom: 0;
@@ -212,4 +211,18 @@ footer{
 }
 #back img {
   width: 50px;
+}
+
+.slick-next {
+    right: 10px !important;
+    z-index: 100;
+ }
+
+.slick-prev {
+    left: 10px !important;
+  z-index: 100;
+ }
+ 
+.t-text {
+  color: #555555;
 }

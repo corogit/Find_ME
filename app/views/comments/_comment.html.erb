@@ -10,7 +10,7 @@
     <% end %>
     <div class="new-comment">
       <%= form_with(model:[pet, comment], remote: true) do |f| %>
-        <%= f.text_area :comment, size:"90x5" ,placeholder: "コメントをここに" %>
-          <%= f.submit "送信する", class: "btn btn-secondary"%>
+        <%= f.text_area :comment, size:"40x3" , placeholder: "コメントをここに" %>
+        <%= f.submit "送信", class: "btn btn-secondary"%>
       <% end %>
     </div>

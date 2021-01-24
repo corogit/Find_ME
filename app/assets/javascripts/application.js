@@ -15,23 +15,22 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
-
+//= require turbolinks
 //= require_tree .
 /* global $document */
-$(function() {
+$(document).on('turbolinks:load', function() {
+  $(function() {
   /* global $ */
-  $('#back a').on('click',function(event){
-    $('body, html').animate({
-      scrollTop:0
-    }, 800);
-    event.preventDefault();
-  });
-});
-
-$(function() {
-  $('#slider').slick({
+    $('#back').on('click',function(event){
+      $('body, html').animate({
+        scrollTop:0
+      }, 800);
+      event.preventDefault();
+    });
+     $('#slider').slick({
       dots: true, //スライドの下にドットのナビゲーションを表示
       autoplay: true, //自動再生
       autoplaySpeed: 4000, //再生スピード
-  });
+    });
+  })
 });

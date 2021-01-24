@@ -22,15 +22,31 @@
 }
 
 .pet-random {
-  margin-top: 60px;
+  background-color: #F2F2ED;
 }
 
-.slick-next {
-    right: 10px !important;
-    z-index: 100;
- }
+.pet-heading {
+  padding-top: 60px;
+  padding-left: 20px;
+}
 
-.slick-prev {
-    left: 10px !important;
-  z-index: 100;
- }
+.user-info {
+  text-align: center;
+}
+
+.col-lg-9 {
+  background-color:	#F2F2ED;
+}
+
+.search-result {
+  background-color:	#F2F2ED;
+}
+
+.table-borderless {
+  text-align: center;
+}
+
+.comments {
+  padding-top: 60px;
+  text-align: right;
+}

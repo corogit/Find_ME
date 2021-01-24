@@ -1,15 +1,19 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col-lg-3">
+    <div class="col-lg-2">
       <%= render 'pets/user', user: current_user %>
     </div>
-    <div class="col-lg-8 offset-lg-1">
+    <div class="col-lg-9 offset-lg-1">
       <h2 class="heading">飼い主さんを募集する</h2>
       <%= render 'layouts/error_messages', model: @pet %>
 
       <%= form_with model: @pet, url: pets_path, method: :post, local: true do |f| %>
-        <%= f.attachment_field :pet_images_images, multiple: true %>
+        
         <table class="table table-borderless">
+          <tr>
+            <td><%= f.label :"写真" %></td>
+            <td><%= f.attachment_field :pet_images_images, multiple: true %></td>
+          </tr>
           <tr>
             <td><%= f.label :"お名前" %></td>
                 <td><%= f.text_field :name, class: "form-control" %></td>
@@ -18,7 +22,7 @@
               <td><%= f.label :"ジャンル" %></td>
               <td><%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "-- 選択してください--") %></td>
               <td>
-              <%= link_to "新ジャンル追加", genres_path, class: "btn btn-secondary" %></td>
+              <%= link_to "新ジャンル追加", genres_path, class: "btn btn-outline-secondary" %></td>
             </tr>
             <tr>
               <td><%= f.label :"お誕生日" %></td>
@@ -40,11 +44,12 @@
               <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "-- 選択してください--" %></td>
             </tr>
             <tr>
-                <td><%= f.label :"紹介" %></td>
-                <td><%= f.text_area :introduction, class: "form-control" %></td>
+              <td><%= f.label :"紹介" %></td>
+              <td><%= f.text_area :introduction, class: "form-control" %></td>
             </tr>
             <tr>
-                <td colspan=3><%= f.submit "投稿する", class: "btn btn-secondary" %></td>
+              <td></td>
+              <td><%= f.submit "投稿する", class: "btn btn-secondary" %></td>
             </tr>
         </table>
       <% end %>

@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2021_01_23_131642) do
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pet_id"], name: "index_pet_images_on_pet_id"
   end
 
   create_table "pets", force: :cascade do |t|

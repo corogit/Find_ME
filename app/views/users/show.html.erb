@@ -1,28 +1,29 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col-lg-3">
+    <div class="col-lg-2">
       <% if @user == current_user %>
         <%= render 'pets/user', user: current_user %>
       <% else %>
         <%= render 'pets/user', user: @user %>
       <% end %>
     </div>
-  
-    <div class="col-lg-8 offset-lg-1">
+
+    <div class="col-lg-9 offset-lg-1">
+      <div class="mypage">
       <% if @user == current_user %>
         <h2 class="heading">マイページ</h2>
-      <% else %>  
+      <% else %>
         <h2 class="heading">ユーザー詳細</h2>
       <% end %>
-      
+
       <% @pets.each do |pet| %>
         <div class="p-list">
           <%= link_to pet_path(pet.id) do %>
             <% pet.pet_images.first(1).each do |image| %>
-             <%= attachment_image_tag pet, :image, size: '350x350', class: "rounded mt-4" %>
+             <%= attachment_image_tag image, :image, size: '350x350', class: "rounded" %>
              <% end %>
           <% end %>
-          <p class="pet-name">お名前: 
+          <p class="pet-name">お名前:
             <%= link_to pet_path(pet.id) do %>
               <%= pet.name %></p>
             <% end %>
@@ -36,6 +37,7 @@
           <%= render 'comments/comment', pet: pet, comment: @comment %>
         </div>
       <% end %>
+      </div>
       <%= paginate @pets %>
     </div>
   </div>
