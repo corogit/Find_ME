@@ -4,6 +4,8 @@ class PetsController < ApplicationController
   def new
     @pet = Pet.new
     @genres = Genre.all
+    @pet.pet_images.build
+    @pets = @pet.pet_images.includes(:user).order(created_at: "DESC")
   end
 
   def create
@@ -20,9 +22,11 @@ class PetsController < ApplicationController
   def index
     @genres = Genre.all
     @pets = Pet.page(params[:page]).reverse_order
+    @search_params = pet_search_params  #検索結果の画面で、フォームに検索した値を表示するために、paramsの値をビューで使えるようにする
   end
 
   def show
+    @pets = Pet.all
     @pet = Pet.find(params[:id])
     @user = current_user
     @comment = Comment.new
@@ -52,7 +56,7 @@ class PetsController < ApplicationController
 
   def search
     @search_params = pet_search_params  #検索結果の画面で、フォームに検索した値を表示するために、paramsの値をビューで使えるようにする
-    @pets = Pet.search(@search_params) #{.includes(:genre)}←なしで行けたよ？why  #Reservationモデルのsearchを呼び出し、引数としてparamsを渡している。
+    @pets = Pet.search(@search_params).includes(:genre)  #Reservationモデルのsearchを呼び出し、引数としてparamsを渡している。
   end
 
   private
@@ -73,7 +77,7 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :image, :birthday, :gender, :introduction, :genre_id, :prefecture_id, :age, :is_active)
+    params.require(:pet).permit(:name, :birthday, :gender, :introduction, :genre_id, :prefecture_id, :age, :is_active, :image,  pet_images_images:[] )
   end
 
 end

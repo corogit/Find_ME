@@ -1,9 +1,15 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-lg-3">
-       <h2>ペット詳細</h2>
-      <p><%= attachment_image_tag @pet, :image, size: "350x350", format: 'jpg', fallback: "no_image.jpg", class: "rounded mt-4" %></p>
+      <h2>ペット詳細</h2>
+      <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+      <div id="slider">
+          <% @pet.pet_images.each do |image| %>
+            <%= attachment_image_tag image, :image, size: '350x350', class: "rounded mt-4" %>
+          <% end %>
+      </div>
     </div>
+     
 
     <div class="col-lg-8 offset-lg-1">
       <div class="pet.name mt-5 ml-5">

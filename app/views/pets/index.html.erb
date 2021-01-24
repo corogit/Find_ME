@@ -1,18 +1,19 @@
 <div class='container'>
   <div class='row mt-5'>
-    <% if user_signed_in? %>
-    <div class="col-lg-3">
-      <%= render 'pets/user', user: current_user %>
+    <div class="col-lg-2">
+      <%= render 'pets/search', search_params: @search_params %>
     </div>
-    <% end %>
-    <div class="col-lg-8 offset-lg-1">
+    <div class="col-lg-9 offset-lg-1">
       <h2 class="heading">飼い主さんを募集中</h2>
-       <p class="pet-count">全<%= @pets.count %>件</p>
-        <div class="pet-box">
+      <p class="pet-count">全<%= @pets.count %>件</p>
+      <div class="pet-box">
+
         <% @pets.each do |pet| %>
           <div class="pet-list">
             <%= link_to pet_path(pet.id) do %>
-              <%= attachment_image_tag pet, :image, format: "jpg", size: "180x180", fallback: "no_image.jpg", class: "rounded" %>
+              <% pet.pet_images.first(1).each do |image| %>
+                <%= attachment_image_tag image, :image, size: '200x200' %>
+              <% end %>
             <% end %>
             <p class="pet-name">お名前: <%= pet.name %></p>
             <p>お誕生日: <%= pet.birthday %></p>
@@ -37,9 +38,8 @@
             <% end %>
           </div>
         <% end %>
-        </div>
-        <%= paginate @pets %>
       </div>
-      <%= link_to "search", search_path %>
+      <%= paginate @pets %>
     </div>
   </div>
+</div>

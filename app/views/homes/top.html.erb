@@ -16,6 +16,22 @@
           <p>Find MEは身寄りのない動物たちの未来を支援しています</p>
         </div>
       </div>
+      <div class="pet-random">
+        <h5><i class="fas fa-cat"></i>ペット募集中の動物たち<i class="fas fa-dog"></i></h5>
+      </div>
+      <div class="pet-box">
+        <% @random.each do |pet| %>
+          <div class="pet-list">
+            <%= link_to pet_path(pet.id) do %>
+              <%= attachment_image_tag pet, :image, format: "jpg", size: "180x180", fallback: "no_image.jpg", class: "rounded" %>
+            <% end %>
+          <p class="pet-name">お名前: <%= pet.name %></p>
+          <p>お誕生日: <%= pet.birthday %></p>
+          <p>年齢: <%= pet.age %></p>
+          <p>性別: <%= pet.gender %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

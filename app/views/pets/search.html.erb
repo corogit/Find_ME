@@ -1,43 +1,43 @@
-<%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
-
-  <%= f.label :birthday, "お誕生日" %>
-  <%= f.date_field :birthday_from, value: @search_params[:birthday_from] %> ~
-  <%= f.date_field :birthday_to, value: @search_params[:birthday_to] %>
-  
-  <div class="field">
-    <%= f.label :prefecture_id, "都道府県" %>
-    <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, selected: @search_params[:prefecture_id], prompt: "----") %>
+<div class='container'>
+  <div class="row mt-5">
+    <div class="col-lg-9">
+      <h2 class="heading">検索結果</h2>
+      <p class="pet-count">全<%= @pets.count %>件</p>
+        <div class="pet-box">
+          <% unless @search_params.blank? %>
+            <% @pets.each do |pet| %>  
+            <div class="pet-list">
+              <%= link_to pet_path(pet.id) do %>
+                <% pet.pet_images.first(1).each do |image| %>
+                  <%= attachment_image_tag image, :image, size: '200x200', class: "rounded" %>
+                <% end %>
+              <% end %>
+            
+              <p class="pet-name">お名前: <%= pet.name %></p>
+              <p>お誕生日: <%= pet.birthday %></p>
+              <p>年齢: <%= pet.age %></p>
+              <p>性別: <%= pet.gender %></p>
+              <p>都道府県: <%= pet.prefecture.name %></p>
+              <p>ステータス：
+                <% if pet.is_active == true %>
+                  <td>募集中</td>
+                <% elsif pet.is_active == false %>
+                  <td>新しいおうちが見つかったよ！</td>
+                <% end %></p>
+              <p>投稿者:
+                <%= attachment_image_tag pet.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %>
+              </p>
+            
+              <% if user_signed_in? %>
+                <div class="favorite-btn<%= pet.id %>">
+                  <%= render 'favorites/favorite', pet: pet %>
+                </div>
+                <p>コメント件数：<%= pet.comments.count %></p>
+              <% end %>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
   </div>
-    
-  <div class="field">
-    <%= f.label :"性別" %>
-    <%= f.radio_button :gender, :男の子♂ %>
-    <%= f.label :"男の子♂" %>
-    <%= f.radio_button :gender, :女の子♀ %>
-    <%= f.label :"女の子♀"%>
-  </div>
-  
-  <div class="field">
-    <%= f.label :"ジャンル" %>
-    <%= f.collection_select(:genre_id, Genre.all, :id, :name, selected: @search_params[:genre_id], prompt: "----") %>
-  </div>
-  
- 
- 
-  <%= submit_tag '検索', class: "button" %>
-<% end %>
-
-<% unless @search_params.blank? %>
-  <% @pets.each do |pet| %>
-    <tr>
-      <%= link_to pet_path(pet.id) do %>
-        <%= attachment_image_tag pet, :image, format: "jpg", size: "180x180", fallback: "no_image.jpg", class: "rounded" %>
-      <% end %>
-      <p class="pet-name">お名前: <%= pet.name %></p>
-      <p>お誕生日: <%= pet.birthday %></p>
-      <p>年齢: <%= pet.age %>才</p>
-      <p>性別: <%= pet.gender %></p>
-      <p>都道府県: <%= pet.prefecture.name %></p>
-    </tr>
-  <% end %>
-<% end %>
+</div>

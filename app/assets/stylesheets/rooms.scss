@@ -1,13 +1,16 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#chats {
+  background: #C7C7B2;
+}
+
 #messages{
   padding: 20px 10px;
   max-width: 450px;
   margin: 15px auto;
   text-align: right;
   font-size: 14px;
-  background: #C7C7B2;
 }
 
 .fukidasi {

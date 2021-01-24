@@ -68,7 +68,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap', '~> 4.5'
-gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
@@ -81,6 +80,8 @@ gem 'dotenv-rails'
 gem 'kaminari', '~> 1.2.1'
 
 gem 'active_hash'
+
+gem 'carrierwave'
 
 group :production do
   gem 'mysql2'

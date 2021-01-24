@@ -1,0 +1,29 @@
+<div class="search-bar">
+  <h5 class="fas fa-search">条件で検索</h5>
+  <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
+    <div class="field">
+      <%= f.label :birthday, "お誕生日" %>
+      <%= f.date_field :birthday_from, value: search_params[:birthday_from] %> ~
+      <%= f.date_field :birthday_to, value: search_params[:birthday_to] %>
+    </div><br>
+  
+    <div class="field">
+      <%= f.label :prefecture_id, "都道府県" %><br>
+      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, selected: search_params[:prefecture_id], prompt: "----") %>
+    </div><br>
+    
+    <div class="field">
+      <%= f.label :"性別" %><br>
+      <%= f.radio_button :gender, :男の子♂ %>
+      <%= f.label :"男の子♂" %><br>
+      <%= f.radio_button :gender, :女の子♀ %>
+      <%= f.label :"女の子♀"%>
+    </div><br>
+  
+    <div class="field">
+      <%= f.label :"ジャンル" %><br>
+      <%= f.collection_select(:genre_id, Genre.all, :id, :name, selected: search_params[:genre_id], prompt: "----") %>
+    </div><br>
+    <%= submit_tag '検索', class: "btn btn-outline-secondary btn-block" %>
+  <% end %>
+</div>

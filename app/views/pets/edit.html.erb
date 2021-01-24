@@ -5,7 +5,7 @@
       <%= render 'layouts/error_messages', model: @pet %>
       <%= form_with model: @pet, url: pet_path, method: :put, local: true do |f| %>
       <%= attachment_image_tag @pet, :image, format: "jpg", size: "200x200", fallback: "no_image.jpg", class: "rounded mt-4" %>
-       <%= f.attachment_field :image, size: "300x300" %>
+       <%= f.attachment_field :pet_images_images, multiple: true %>
         <table class="table table-borderless">
           <tr>
             <td><%= f.label :"お名前" %></td>

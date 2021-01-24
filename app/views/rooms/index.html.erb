@@ -1,6 +1,25 @@
-<h2 class="heading">DM一覧</h2>
-<% @rooms.each do |room| %>
-  <%= link_to room_path(room.id) do %>
-    <%= room.users.where.not(id:current_user.id).first.full_name %>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-12">
+      <h2 class="heading">DM一覧</h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>プロフィール画像</th>
+              <th>名前</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @rooms.each do |room| %>
+            <tr>
+              <td><%= attachment_image_tag room.users.where.not(id:current_user.id).first, :profile_image, size: '60x60', fallback: "no_image_icon.jpg", class: "rounded-circle" %></td>
+              <td><%= link_to room_path(room.id) do %>
+                    <%= room.users.where.not(id:current_user.id).first.full_name %>
+                  <% end %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>

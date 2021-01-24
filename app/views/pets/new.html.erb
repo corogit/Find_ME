@@ -6,8 +6,9 @@
     <div class="col-lg-8 offset-lg-1">
       <h2 class="heading">飼い主さんを募集する</h2>
       <%= render 'layouts/error_messages', model: @pet %>
+
       <%= form_with model: @pet, url: pets_path, method: :post, local: true do |f| %>
-        <%= f.attachment_field :image, size: "300x300" %>
+        <%= f.attachment_field :pet_images_images, multiple: true %>
         <table class="table table-borderless">
           <tr>
             <td><%= f.label :"お名前" %></td>

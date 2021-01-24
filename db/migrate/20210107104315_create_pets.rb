@@ -7,11 +7,11 @@ class CreatePets < ActiveRecord::Migration[5.2]
       t.date :birthday
       t.integer :gender
       t.string :introduction
-      t.string :image_id
       t.boolean :is_active, default: true
       t.integer :prefecture_id
       t.integer :age
-
+      t.string :image
+      
       t.timestamps
     end
   end

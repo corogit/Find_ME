@@ -76,14 +76,14 @@ body {
   height: 100%;
   margin: 0px;
   min-height: 100vh;
-  position: relative;/*←相対位置*/
+  // position: relative;/*←相対位置*/
   padding-bottom: 120px;/*←footerの高さ*/
   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
   padding: 0;
 }
 
 footer{
-  position: absolute;/*←絶対位置*/
+  position: fixed;
   bottom: 0; /*下に固定*/
   width: 100%;
   height: auto;
@@ -123,16 +123,15 @@ footer{
 .col-lg-8 {
   margin-left: 400px;
 }
+
 .side-bar {
   background-color: #F2F2F2;
-　position: sticky;
-　top: 0px;
 }
 
 .top-content {
   display: flex;
   justify-content: center;
-
+  border-bottom: 1px solid #ccc;
 }
 
 .content {
@@ -159,6 +158,11 @@ footer{
 .content-text p {
   padding-top: 150px;
   font-size: 15px;
+}
+
+.about-content {
+  display: flex;
+  justify-content: center;
 }
 
 .about-content1 {
@@ -204,7 +208,7 @@ footer{
 #back {
   position: fixed;
   right: 20px;
-  bottom: 20px;
+  bottom: 48px;
 }
 #back img {
   width: 50px;

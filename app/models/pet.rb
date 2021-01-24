@@ -3,8 +3,10 @@ class Pet < ApplicationRecord
   belongs_to :genre
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :pet_images, dependent: :destroy
+  accepts_attachments_for :pet_images, attachment: :image
 
-  validates :image, presence: true
+  
   validates :name, presence: true
   validates :birthday, presence: true
   validates :gender, presence: true
@@ -14,7 +16,7 @@ class Pet < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  attachment :image
+
 
   enum gender: { 男の子♂: 0, 女の子♀: 1 }
 
