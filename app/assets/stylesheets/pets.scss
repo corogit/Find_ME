@@ -34,12 +34,17 @@
   text-align: center;
 }
 
+.mypage {
+  background-color:	#F2F2ED;
+}
+
 .col-lg-9 {
   background-color:	#F2F2ED;
 }
 
-.search-result {
+.background {
   background-color:	#F2F2ED;
+  text-align: center;
 }
 
 .table-borderless {
@@ -49,4 +54,12 @@
 .comments {
   padding-top: 60px;
   text-align: right;
+}
+
+.new-comment {
+  text-align: left;
+}
+
+.share-links {
+  margin-top: 80px;
 }

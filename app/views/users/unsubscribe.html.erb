@@ -1,12 +1,12 @@
-<div>
-  <h2>本当に退会しますか？</h2>
-  <div>
-    <p>退会する場合は、『退会する』をクリックしてください。</p>
-  </div>
-  <div>
-    <%= link_to '退会しない', user_path(current_user.id) %>
-    <% if user_signed_in? && @user.id == current_user.id %>
-      <%= link_to "退会する", user_withdraw_path(current_user.id), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
-    <% end %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-10">
+      <h2>本当に退会しますか？</h2>
+        <p>退会する場合は、『退会する』をクリックしてください。</p>
+          <%= link_to '退会しない', user_path(current_user.id), class: "btn btn-success" %>
+          <% if user_signed_in? && @user.id == current_user.id %>
+            <%= link_to "退会する", user_withdraw_path(current_user.id), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+          <% end %>
+    </div>
   </div>
 </div>

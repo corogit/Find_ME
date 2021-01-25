@@ -8,11 +8,13 @@
             <%= attachment_image_tag image, :image %>
           <% end %>
       </div>
+      <% if user_signed_in? %>
       <div class="comments">
         <div class="comments_<%= @pet.id %>">
           <%= render 'comments/comment', pet: @pet, comment: @comment %>
         </div>
       </div>
+      <% end %>
     </div>
 
     <div class="col-lg-5 mt-5">

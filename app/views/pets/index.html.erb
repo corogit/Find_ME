@@ -4,7 +4,7 @@
       <%= render 'pets/search', search_params: @search_params %>
     </div>
     <div class="col-lg-9 offset-lg-1">
-      <h2 class="heading">飼い主さんを募集中</h2>
+      <h2 class="heading"><i class="far fa-star"></i>  飼い主さんを募集中  <i class="far fa-star"></i></h2>
       <p class="pet-count">全<%= @pets.count %>件</p>
       <div class="pet-box">
 
@@ -24,7 +24,7 @@
               <% if pet.is_active == true %>
                 <td>募集中</td>
               <% elsif pet.is_active == false %>
-                <td>新しいおうちが見つかったよ！</td>
+                <td>新居決定！</td>
               <% end %></p>
             <p>投稿者:
               <%= attachment_image_tag pet.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %>

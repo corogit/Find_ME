@@ -1,16 +1,19 @@
-<p>コメント件数：<%= pet.comments.count %></p>
+<div class="new-comment">
+  <p>コメント件数：<%= pet.comments.count %></p>
     <% pet.comments.each do |comment| %>
       <%= comment.user.full_name %>
         <%= comment.created_at.strftime('%Y/%m/%d') %><%= simple_format comment.comment %>
           <% if comment.user == current_user %>
             <div class="comment-delete">
-              <%= link_to "削除", pet_comment_path(comment.pet, comment), method: :delete, remote: true %>
+              <%= link_to "削除", pet_comment_path(comment.pet, comment), method: :delete, remote: true, class: "btn btn-outline-danger" %>
             </div>
           <% end %>
     <% end %>
-    <div class="new-comment">
-      <%= form_with(model:[pet, comment], remote: true) do |f| %>
+  </div>
+    <%= form_with(model:[pet, comment], remote: true) do |f| %>
+    <div>
         <%= f.text_area :comment, size:"40x3" , placeholder: "コメントをここに" %>
-        <%= f.submit "送信", class: "btn btn-secondary"%>
-      <% end %>
+        <%= f.submit "送信", class: "btn btn-secondary" %>
     </div>
+    <% end %>
+    

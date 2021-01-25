@@ -33,6 +33,7 @@ header {
   left: 0px;
   background-color: white;
   height: 100px;
+  border-bottom: 1px solid #F2F2F1;
 }
 
 .heading {
@@ -75,28 +76,29 @@ body {
   height: 100%;
   margin: 0px;
   min-height: 100vh;
-  // position: relative;/*←相対位置*/
-  padding-bottom: 120px;/*←footerの高さ*/
+  position: relative;/*←相対位置*/
+  padding-bottom: 50px;/*←footerの高さ*/
   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
   padding: 0;
 }
 
 footer{
-
+  position: absolute;
   bottom: 0; /*下に固定*/
   width: 100%;
-  height: auto;
+  height: 50px;
   background-color: white;
-  text-align: center;
-  margin-top: auto;
+  padding-top: 10px;
   margin-bottom: 0;
-  padding-top: 20px;
+  text-align: center;
+  border-top: 1px solid #F2F2F1;
 }
 
 .main-visual {
   background-image: image-url("top-dog.jpeg");
   height: 600px;
   background-size: cover;
+  margin-top: 40px;
 }
 
 .main-visual-content {
@@ -113,6 +115,7 @@ footer{
   background-image: image-url("dog&cat.jpg");
   height: 500px;
   background-size: cover;
+  margin-top: 40px;
 }
 
 .col-lg-3 {
@@ -166,20 +169,21 @@ footer{
 
 .about-content1 {
   width: 30%;
-  height: 400px;
+  height: 300px;
   padding: 0 30px;
-  border-right:1px solid #ccc;
+  border-right: 2px solid #ccc;
 }
 .about-content2 {
   width: 30%;
-  height: 400px;
+  height: 300px;
   padding: 0 30px;
-  border-right:1px solid #ccc;
+  border-right: 2px solid #ccc;
 }
 .about-content3 {
   width: 30%;
-  height: 400px;
-  padding: 0 30px;
+  height: 300px;
+  padding-left: 30px;
+  margin-bottom: 80px;
 }
 
 .about-heading1 {
@@ -196,7 +200,7 @@ footer{
   font-size: 40px;
   text-align: center;
   font-family: 'IM Fell DW Pica SC', serif;
-  padding-top: 120px;
+  padding-top: 90px;
   padding-bottom: 80px;
 }
 
@@ -207,22 +211,43 @@ footer{
 #back {
   position: fixed;
   right: 20px;
-  bottom: 48px;
+  bottom: 55px;
 }
 #back img {
   width: 50px;
 }
 
 .slick-next {
-    right: 10px !important;
-    z-index: 100;
+  right: 10px !important;
+  z-index: 100;
  }
 
 .slick-prev {
-    left: 10px !important;
+  left: 10px !important;
   z-index: 100;
  }
- 
+
 .t-text {
   color: #555555;
+}
+
+.login {
+  height: 500px;
+}
+
+a {
+  color: #555555;
+}
+
+.info {
+  padding-right: 30px;
+  text-align: center;
+  float: right;
+  color: #888880;
+}
+
+.sns {
+  padding-left: 30px;
+  text-align: center;
+  float: left;
 }

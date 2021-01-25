@@ -4,7 +4,11 @@
       <h2 class="heading">投稿内容編集</h2>
       <%= render 'layouts/error_messages', model: @pet %>
       <%= form_with model: @pet, url: pet_path, method: :put, local: true do |f| %>
-      <%= attachment_image_tag @pet, :image, format: "jpg", size: "200x200", fallback: "no_image.jpg", class: "rounded mt-4" %>
+                  <%= link_to pet_path(@pet.id) do %>
+              <% @pet.pet_images.first(1).each do |image| %>
+                <%= attachment_image_tag image, :image, size: '200x200', class: "rounded" %>
+              <% end %>
+            <% end %>
        <%= f.attachment_field :pet_images_images, multiple: true %>
         <table class="table table-borderless">
           <tr>
@@ -38,7 +42,7 @@
             <td><%= f.text_area :introduction, class: "form-control" %></td>
           </tr>
           <tr>
-            <td><%= f.label :"販売ステータス" %></td>
+            <td><%= f.label :"ステータス" %></td>
             <td><%= f.select :is_active, [['募集中', true], ['新しいおうちが見つかったよ！', false]], prompt: "-- 選択してください --"  %></td>
             </tr>
         </table>

@@ -1,9 +1,8 @@
 <div class='container'>
   <div class="row mt-5">
     <div class="col-lg-12">
-      <div class="search-result">
+      <div class="background">
         <h2 class="heading">検索結果</h2>
-          <p class="pet-count">全<%= @pets.count %>件</p>
           <div class="pet-box">
           <% unless @search_params.blank? %>
             <% @pets.each do |pet| %>  

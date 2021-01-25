@@ -7,10 +7,11 @@ class Pet < ApplicationRecord
   accepts_attachments_for :pet_images, attachment: :image
 
   
-  validates :name, presence: true
   validates :birthday, presence: true
   validates :gender, presence: true
   validates :introduction, length: { maximum: 200 }
+  validates :age, presence: true
+  validates :image, presence: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

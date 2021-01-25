@@ -8,7 +8,7 @@
       <% end %>
     </div>
 
-    <div class="col-lg-9 offset-lg-1">
+    <div class="col-md-9 offset-lg-1">
       <div class="mypage">
       <% if @user == current_user %>
         <h2 class="heading">マイページ</h2>
@@ -30,6 +30,7 @@
             <p>性別: <%= pet.gender %></p>
             <p>お誕生日: <%= pet.birthday %></p>
         </div>
+      </div>
         <div class="favorite-btn<%= pet.id %>">
           <%= render 'favorites/favorite', pet: pet %>
         </div>
@@ -37,7 +38,7 @@
           <%= render 'comments/comment', pet: pet, comment: @comment %>
         </div>
       <% end %>
-      </div>
+     
       <%= paginate @pets %>
     </div>
   </div>
