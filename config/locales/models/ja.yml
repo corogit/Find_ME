@@ -1,0 +1,18 @@
+ja:
+  attributes:
+      user:
+        last_name: 姓
+        first_name: 名
+        last_name_kana: セイ
+        first_name_kana: メイ
+        email: メールアドレス
+        password: パスワード
+        zipcode: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+      pet:
+        gender: 性別
+        birthday: 誕生日
+        genre: ジャンル
+        age: 年齢
+        image: 画像

@@ -3,6 +3,7 @@
     <div class="col-lg-10">
       <div class="background">
         <h2 class="heading">プロフィール編集</h2>
+        <%= render 'layouts/error_messages', model: @user %>
         <%= form_with model: @user, url: user_path(@user.id), method: :put, local: true do |f| %>
           <div class="form-group">
             <%= f.label :profile_image, "プロフィール画像" %>
