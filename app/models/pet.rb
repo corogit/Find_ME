@@ -11,7 +11,8 @@ class Pet < ApplicationRecord
   validates :gender, presence: true
   validates :introduction, length: { maximum: 200 }
   validates :age, presence: true
-  validates :image, presence: true
+  validates :pet_images, presence: true
+  validates :prefecture_id, presence: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
