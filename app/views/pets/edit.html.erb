@@ -1,59 +1,68 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12 col-sm-12 text-center mt-4">
-      <h2 class="heading">投稿内容編集</h2>
-      <%= render 'layouts/error_messages', model: @pet %>
-      <%= form_with model: @pet, url: pet_path, method: :put, local: true do |f| %>
-                  <%= link_to pet_path(@pet.id) do %>
+      <div class="background">
+        <h2 class="heading">投稿内容編集</h2>
+        <%= render 'layouts/error_messages', model: @pet %>
+        <%= form_with model: @pet, url: pet_path, method: :put, local: true do |f| %>
+          
+          <%= link_to pet_path(@pet.id) do %>
               <% @pet.pet_images.first(1).each do |image| %>
-                <%= attachment_image_tag image, :image, size: '200x200', class: "rounded" %>
+                <%= attachment_image_tag image, :image, size: '350x300', class: "rounded" %>
               <% end %>
-            <% end %>
-       <%= f.attachment_field :pet_images_images, multiple: true %>
-        <table class="table table-borderless">
-          <tr>
-            <td><%= f.label :"お名前" %></td>
-            <td><%= f.text_field :name, class: "form-control" %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :"ジャンル" %></td>
-            <td><%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "-- 選択してください--") %></td>
-            <td><%= link_to "新ジャンル追加", genres_path, class: "btn btn-secondary" %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :"お誕生日" %></td>
-            <td><%= f.text_field :birthday, class: "form-control" %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :"年齢" %></td>
-            <td><%= f.text_field :age, class: "form-control" %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :"性別" %></td>
-            <td><%= f.radio_button :gender,"男の子♂" %>男の子(♂)<span></span>
-                <%= f.radio_button :gender, "女の子♀" %>女の子(♀)</td>
-          </tr>
-          <tr>
-            <td><%= f.label :"都道府県" %></td>
-            <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "-- 選択してください--" %></td>
+          <% end %>
+          <table class="table table-borderless">
+            <tr>
+              <td></td>
             </tr>
-          <tr>
-            <td><%= f.label :"紹介" %></td>
-            <td><%= f.text_area :introduction, class: "form-control" %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :"ステータス" %></td>
-            <td><%= f.select :is_active, [['募集中', true], ['新しいおうちが見つかったよ！', false]], prompt: "-- 選択してください --"  %></td>
+            <tr>
+              <td><%= f.label :"写真" %></td>
+              <td><%= f.attachment_field :pet_images_images, multiple: true %></td>
             </tr>
-        </table>
-        <%= f.submit "更新する", class: "btn btn-secondary" %>
-      <% end %>
-    </div>
-  </div>
-  <div class='row'>
-    <div class="col-lg-12 col-sm-12 text-center mt-4">
-      
-      <%= link_to "削除する", pet_path(@pet), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+            <tr>
+              <td><%= f.label :"お名前" %></td>
+              <td><%= f.text_field :name, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :"ジャンル" %></td>
+              <td><%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "-- 選択してください--") %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :"お誕生日" %></td>
+              <td><%= f.text_field :birthday, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :"年齢" %></td>
+              <td><%= f.text_field :age, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :"性別" %></td>
+              <td><%= f.radio_button :gender,"男の子♂" %>男の子(♂)<span></span>
+                  <%= f.radio_button :gender, "女の子♀" %>女の子(♀)</td>
+            </tr>
+            <tr>
+              <td><%= f.label :"都道府県" %></td>
+              <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "-- 選択してください--" %></td>
+              </tr>
+            <tr>
+              <td><%= f.label :"紹介" %></td>
+              <td><%= f.text_area :introduction, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :"ステータス" %></td>
+              <td><%= f.select :is_active, [['募集中', true], ['新しいおうちが見つかったよ！', false]], prompt: "-- 選択してください --"  %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "更新する", class: "btn btn-secondary" %></td>
+              <td><%= link_to "削除する", pet_path(@pet), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
+            </tr>
+            <tr>
+              <td></td>
+            </tr>
+          </table>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -2,56 +2,59 @@
   <div class="row mt-5">
     <div class="col-lg-12">
       <div class="background">
-        <h2 class="heading">新規登録</h2>
-        <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+      <h2 class="heading">新規会員登録</h2>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
 
-        <div class="form-group">
-          <%= f.label :profile_image, "プロフィール画像" %>
-          <%= f.attachment_field :profile_image %>
+        <div class="class="inputTableArea>
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th width="40%" colspan="1">名前(姓)(名)</th>
+                <td><%= f.text_field :last_name, autofocus: true, id: "last_name__input", class: "form-control" %></td>
+                <td width="30%"><%= f.text_field :first_name, autofocus: true, id: "first_name__input", class: "form-control" %></td>
+              </tr>
+              <tr>
+                <th>フリガナ(セイ)(メイ)</th>
+                <td><%= f.text_field :last_name_kana, autofocus: true, id: "last_name_kana__input", class: "form-control" %></td>
+                <td><%= f.text_field :first_name_kana, autofocus: true, id: "first_name_kana__input", class: "form-control" %></td>
+              </tr>
+              <tr>
+                <th><label for="email__input">メールアドレス</label></th>
+                <td><%= f.email_field :email, autofocus: true, id: "email__input", class: "form-control" %></td>
+              </tr>
+              <tr>
+                <th><label for="zipcode__input">郵便番号（ハイフンなし）</label></th>
+                <td><%= f.text_field :zipcode, autofocus: true, id: "zip_code__input", class: "form-control" %></td>
+              </tr>
+              <tr>
+                <th><label for="address__input">住所</label></th>
+                <td><%= f.text_field :address, autofocus: true, id: "address__input", class: "form-control" %></td>
+              </tr>
+              <tr>
+                <th><label for="phone_number__input">電話番号（ハイフンなし）</label></th>
+                <td><%= f.text_field :phone_number, autofocus: true, id: "phone_number__input", class: "form-control" %></td>
+              </tr>
+              <tr>
+                <th><label for="password__input">パスワード（６文字以上）</label></th>
+                <td><%= f.password_field :password, autofocus: true, id: "password__input", class: "form-control" %></td>
+              </tr>
+              <tr>
+                <th><label for="password_confirmation__input">パスワード（確認用）</label></th>
+                <td><%= f.password_field :password_confirmation, autofocus: true, id: "password_confirmation__input", class: "form-control" %></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><%= f.submit "登録する", class: "btn btn-secondary" %></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><%= render "devise/shared/links" %></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="form-group">
-          <%= f.label :last_name, "名前(姓)"%>
-          <%= f.text_field :last_name, autofocus: true, placeholder: "(例)山田" %>
-          <%= f.label :first_name, "(名)" %>
-          <%= f.text_field :first_name, placeholder: "(例)太郎" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :last_name_kana, "フリガナ(メイ)" %>
-          <%= f.text_field :last_name_kana, autofocus: true, placeholder: "(例)ヤマダ", autocomplete: "last_name_kana" %>
-          <%= f.label :first_name_kana, "(メイ)" %>
-          <%= f.text_field :first_name_kana, placeholder: "(例)タロウ", autocomplete: "first_name_kana" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :email, "メールアドレス" %>
-          <%= f.email_field :email, placeholder: "(例)yamada_taro@findme.com", autocomplete: "email" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :zipcode, "郵便番号(ハイフンなし)" %>
-          <%= f.text_field :zipcode, placeholder: "(例)6666666", autocomplete: "zipcode" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :address, "住所" %>
-          <%= f.text_field :address, placeholder: "(例)東京都〇〇区〇〇町〇-〇-〇", autocomplete: "address", style: "width: 40%;" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :phone_number, "電話番号(ハイフンなし)" %>
-          <%= f.text_field :phone_number, placeholder: "(例)0901234567", autocomplete: "phone_number" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password, "パスワード(6文字以上)" %>
-          <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password_confirmation, "パスワード(確認用)" %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
-        <div class="actions mt-5">
-          <%= f.submit "Sign up", class: "btn btn-secondary" %>
-        </div>
-        <% end %>
-
-        <%= render "devise/shared/links" %>
+      <% end %>
       </div>
     </div>
   </div>

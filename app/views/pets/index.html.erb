@@ -4,42 +4,44 @@
       <%= render 'pets/search', search_params: @search_params %>
     </div>
     <div class="col-lg-9 offset-lg-1">
-      <h2 class="heading"><i class="far fa-star"></i>  飼い主さんを募集中  <i class="far fa-star"></i></h2>
-      <p class="pet-count">全<%= @pets.count %>件</p>
-      <div class="pet-box">
-
-        <% @pets.each do |pet| %>
-          <div class="pet-list">
-            <%= link_to pet_path(pet.id) do %>
-              <% pet.pet_images.first(1).each do |image| %>
-                <%= attachment_image_tag image, :image, size: '200x200', class: "rounded" %>
+      <p id="notice"><%=  notice %></p>
+      <div class="background">
+        <h2 class="heading"><i class="far fa-star"></i>  飼い主さんを募集中  <i class="far fa-star"></i></h2>
+        <p class="pet-count">全<%= @pets.count %>件</p>
+        <div class="pet-box">
+          <% @pets.each do |pet| %>
+            <div class="pet-list">
+              <%= link_to pet_path(pet.id) do %>
+                <% pet.pet_images.first(1).each do |image| %>
+                  <%= attachment_image_tag image, :image, size: '200x200', class: "rounded" %>
+                <% end %>
               <% end %>
-            <% end %>
-            <p class="pet-name">お名前: <%= pet.name %></p>
-            <p>生年月日: <%= pet.birthday %></p>
-            <p>年齢: <%= pet.age %></p>
-            <p>性別: <%= pet.gender %></p>
-            <p>都道府県: <%= pet.prefecture.name %></p>
-            <p>ステータス：
-              <% if pet.is_active == true %>
-                <td>募集中</td>
-              <% elsif pet.is_active == false %>
-                <td>新居決定！</td>
-              <% end %></p>
-            <p>投稿者:
-              <%= attachment_image_tag pet.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %>
-            </p>
-
-            <% if user_signed_in? %>
-            <div class="favorite-btn<%= pet.id %>">
-              <%= render 'favorites/favorite', pet: pet %>
+              <p class="pet-name">お名前: <%= pet.name %></p>
+              <p>生年月日: <%= pet.birthday %></p>
+              <p>年齢: <%= pet.age %></p>
+              <p>性別: <%= pet.gender %></p>
+              <p>都道府県: <%= pet.prefecture.name %></p>
+              <p>ステータス：
+                <% if pet.is_active == true %>
+                  <td>募集中</td>
+                <% elsif pet.is_active == false %>
+                  <td>新居決定！</td>
+                <% end %></p>
+              <p>投稿者:
+                <%= attachment_image_tag pet.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image_icon.jpg",class: "rounded-circle" %>
+              </p>
+  
+              <% if user_signed_in? %>
+              <div class="favorite-btn<%= pet.id %>">
+                <%= render 'favorites/favorite', pet: pet %>
+              </div>
+              <p>コメント件数：<%= pet.comments.count %></p>
+              <% end %>
             </div>
-            <p>コメント件数：<%= pet.comments.count %></p>
-            <% end %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
+        <%= paginate @pets %>
       </div>
-      <%= paginate @pets %>
     </div>
   </div>
 </div>

@@ -1,35 +1,63 @@
 <div class="container">
-  <div class="row mt-5 ml-5">
-    <div class="col-lg-10">
+  <div class="row mt-5">
+    <div class="col-lg-12">
       <div class="background">
-        <h2 class="heading">プロフィール編集</h2>
+        <h2 class="heading">登録情報編集</h2>
         <%= render 'layouts/error_messages', model: @user %>
         <%= form_with model: @user, url: user_path(@user.id), method: :put, local: true do |f| %>
-          <div class="form-group">
-            <%= f.label :profile_image, "プロフィール画像" %>
-            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %>
-            <%= f.attachment_field :profile_image %>
-          </div>
-          <div class="form-group">
-            <%= f.label :last_name, "名前(姓)" %>
-            <%= f.text_field :last_name, autofocus: true, placeholder: "(例)山田" %>
-            <%= f.label :first_name, "(名)" %>
-            <%= f.text_field :first_name, placeholder: "(例)太郎"%>
-          </div>
-          <div class="form-group">
-            <%= f.label :last_name_kana, "フリガナ(セイ)" %>
-            <%= f.text_field :last_name_kana, autofocus: true, placeholder: "(例)ヤマダ", autocomplete: "last_name_kana" %>
-            <%= f.label :first_name_kana, "(メイ)" %>
-            <%= f.text_field :first_name_kana, placeholder: "(例)タロウ", autocomplete: "first_name_kana" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :introduction, "紹介文" %>
-            <%= f.text_area :introduction, placeholder: "(例)初めまして。", autocomplete: "introduction" %>
-          </div>
-          <%= f.submit "変更を保存", class: "btn btn-secondary" %>
+          <table class="table table-borderless">
+            <tr>
+              <th width="40%"><label for="profile_image__input">プロフィール画像</label></th>
+              <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image_icon.jpg", class: "rounded-circle" %></td>
+              <td width="30%"> <%= f.attachment_field :profile_image %></td>
+            </tr>
+            <tr>
+              <th>名前（姓）（名）</th>
+              <td><%= f.text_field :last_name, autofocus: true, id: "last_name__input", class: "form-control" %></td>
+              <td><%= f.text_field :first_name, autofocus: true, id: "first_name__input", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th>フリガナ（セイ）（メイ）</th>
+              <td><%= f.text_field :last_name_kana, autofocus: true, id: "last_name_kana__input", class: "form-control" %></td>
+              <td><%= f.text_field :first_name_kana, autofocus: true, id: "first_name_kana__input", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th><label for="mail_address__input">メールアドレス</label></th>
+              <td colspan="2"><%= f.email_field :email, autofocus: true, id: "mail_address__input", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th><label for="post_code__input">郵便番号（ハイフンなし）</label></th>
+              <td colspan="2"><%= f.text_field :zipcode, autofocus: true, id: "post_code__input", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th><label for="address__input">住所</label></th>
+              <td colspan="2"><%= f.text_field :address, autofocus: true, id: "address__input", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th><label for="phone_number__input">電話番号（ハイフンなし）</label></th>
+              <td colspan="2"><%= f.text_field :phone_number, autofocus: true, id: "phone_number__input", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th><label for="introduction__input">ひとこと (50文字以内)</label></th>
+              <td colspan="2"><%= f.text_area :introduction, autocomplete: "introduction", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "編集内容を保存する", class: "btn btn-secondary" %></td>
+              <td><%= link_to '退会する', user_unsubscribe_path(@user.id), class: "btn btn-danger" %></td>
+            </tr>
+            <tr>
+              <td></td>
+            </tr>
+          </table>
+       
+                  
+                  
+          
         <% end %>
-        <br>
-        <%= link_to "退会する", user_unsubscribe_path(@user.id), class: "btn btn-danger" %>
       </div>
     </div>
   </div>

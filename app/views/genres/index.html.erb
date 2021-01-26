@@ -4,6 +4,7 @@
             <%= render 'pets/user', user: current_user %>
         </div>
         <div class="col-lg-9 offset-lg-1">
+            <p id="notice"><%=  notice %></p>
             <%= render 'layouts/error_messages', model: @genre %>
             <%= form_with model: @genre, url: genres_path, local: true do |f| %>
                 <table class="table table-borderless">

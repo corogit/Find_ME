@@ -11,7 +11,7 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     @pet.user_id = current_user.id
     if @pet.save
-      redirect_to pets_path
+      redirect_to pets_path, notice: '投稿に成功しました。'
     else
       @genres = Genre.all
       render :new
@@ -40,7 +40,7 @@ class PetsController < ApplicationController
   def update
     @pet = Pet.find(params[:id])
     if @pet.update(pet_params)
-      redirect_to pet_path
+      redirect_to pet_path, notice: '変更内容を更新しました。'
     else
       @genres = Genre.all
       render :edit
@@ -50,7 +50,7 @@ class PetsController < ApplicationController
   def destroy
     @pet = Pet.find(params[:id])
     @pet.destroy
-    redirect_to pets_path
+    redirect_to pets_path, notice: '投稿内容を削除しました。'
   end
 
   def search
