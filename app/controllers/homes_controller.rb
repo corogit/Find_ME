@@ -3,9 +3,9 @@ class HomesController < ApplicationController
     @genres = Genre.all
 
     if Rails.env.production?
-      @random = Pet.order("rand()").limit(4)
+      @random = Pet.where(:is_active => true).order("rand()").limit(4)
     else
-      @random = Pet.order("RANDOM()").limit(4)
+      @random = Pet.where(:is_active => true).order("RANDOM()").limit(4)
     end
   end
 
