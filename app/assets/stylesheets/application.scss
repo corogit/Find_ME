@@ -158,6 +158,7 @@ footer{
 }
 
 .about-content {
+  height: auto;
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
@@ -203,7 +204,7 @@ footer{
 #back {
   position: fixed;
   right: 20px;
-  bottom: 55px;
+  bottom: 60px;
 }
 #back img {
   width: 50px;

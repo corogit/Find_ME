@@ -19,7 +19,7 @@ class PetsController < ApplicationController
 
   def index
     @genres = Genre.all
-    @pets = Pet.page(params[:page]).reverse_order
+    @pets = Pet.page(params[:page]).reverse_order.where(:is_active => true)
     @search_params = pet_search_params  # 検索結果の画面で、フォームに検索した値を表示するために、paramsの値をビューで使えるようにする
   end
 
