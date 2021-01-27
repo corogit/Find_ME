@@ -61,9 +61,8 @@ header {
   padding-left: 25px;
 }
 
-.nav-item1 {
-  padding-top: 25px;
-  margin-left: 400px;
+nav {
+color: #F5FFFA;
 }
 
 .main {
@@ -163,26 +162,24 @@ footer{
 }
 
 .about-content {
+  height: auto;
   display: flex;
   justify-content: center;
-  margin-bottom: 125px;
+  margin-bottom: 80px;
 }
 
 .about-content1 {
   width: 30%;
-  height: 350px;
   padding: 0 30px;
   border-right: 2px solid #ccc;
 }
 .about-content2 {
   width: 30%;
-  height: 350px;
   padding: 0 30px;
   border-right: 2px solid #ccc;
 }
 .about-content3 {
   width: 30%;
-  height: 305px;
   padding-left: 30px;
 }
 

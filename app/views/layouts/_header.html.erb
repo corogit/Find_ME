@@ -4,11 +4,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      
         <%= link_to root_path do %>
           <p id="logo-head"><%= image_tag 'logo1.png', :size => '150x75' %></p>
         <% end %>
-
+        <ul class="navbar-nav ml-auto"> 
         <% if user_signed_in? %>
           <p class="welcome"> ようこそ、<strong><%= current_user.last_name %> <%= current_user.first_name %></strong> さん！</p>
           <li class="nav-item">
@@ -31,7 +31,7 @@
           </li>
 
         <% else %>
-          <li class="nav-item1">
+          <li class="nav-item">
             <%= link_to "TOP", root_path, class: 'btn' %>
           </li><br>
           <li class="nav-item">

@@ -17,7 +17,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-/* global $document */
+
 $(document).on('turbolinks:load', function() {
   $(function() {
   /* global $ */
