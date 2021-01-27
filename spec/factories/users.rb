@@ -7,7 +7,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     address { Faker::Lorem.characters(number: 20) }
     zipcode { Faker::Lorem.characters(number: 7) }
-    phone_number { Faker::Lorem.characters(number: 11)}
+    phone_number { Faker::Lorem.characters(number: 11) }
     is_deleted { false }
     introduction { Faker::Lorem.characters(number: 20) }
     password { 'password' }

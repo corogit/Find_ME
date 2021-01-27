@@ -24,14 +24,14 @@ class User < ApplicationRecord
 
   validates :last_name, presence: true, uniqueness: true
   validates :first_name, presence: true
-  VALID_KANA_REGEX = /\A[\p{katakana}\p{blank}ー－]+\z/
+  VALID_KANA_REGEX = /\A[\p{katakana}\p{blank}ー－]+\z/.freeze
   validates :last_name_kana, presence: true, format: { with: VALID_KANA_REGEX }
-  validates :first_name_kana, presence: true,  format: { with: VALID_KANA_REGEX }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :first_name_kana, presence: true, format: { with: VALID_KANA_REGEX }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :zipcode, presence: true
   validates :address, presence: true
-  VALID_PHONE_NUMBER_REGEX = /\A0(\d{1}[-(]?\d{4}|\d{2}[-(]?\d{3}|\d{3}[-(]?\d{2}|\d{4}[-(]?\d{1})[-)]?\d{4}\z|\A0[5789]0[-]?\d{4}[-]?\d{4}\z/
+  VALID_PHONE_NUMBER_REGEX = /\A0(\d{1}[-(]?\d{4}|\d{2}[-(]?\d{3}|\d{3}[-(]?\d{2}|\d{4}[-(]?\d{1})[-)]?\d{4}\z|\A0[5789]0[-]?\d{4}[-]?\d{4}\z/.freeze
   validates :phone_number, presence: true, format: { with: VALID_PHONE_NUMBER_REGEX }
   validates :introduction, length: { maximum: 50 }
 

@@ -6,7 +6,7 @@
       <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
       <div id="slider">
           <% @pet.pet_images.each do |image| %>
-            <%= attachment_image_tag image, :image %>
+            <%= attachment_image_tag image, :image, format: "jpeg", size: '540x359' %>
           <% end %>
       </div>
       <% if user_signed_in? %>

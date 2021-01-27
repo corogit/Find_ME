@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
-
   def show
     @user = User.find(params[:id])
     @pets = @user.pets.page(params[:page]).per(1)

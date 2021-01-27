@@ -32,5 +32,5 @@ $(document).on('turbolinks:load', function() {
       autoplay: true, //自動再生
       autoplaySpeed: 4000, //再生スピード
     });
-  })
+  });
 });

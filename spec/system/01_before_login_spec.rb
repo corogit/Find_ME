@@ -48,11 +48,11 @@ describe '[STEP1] ユーザログイン前のテスト' do
         pets_link = find_all('a')[3].native.inner_text
         expect(pets_link).to eq("飼い主さん募集中の動物たち")
       end
-        it '登録するリンクが表示される: 左上から4番目のリンクが「登録する」である' do
+      it '登録するリンクが表示される: 左上から4番目のリンクが「登録する」である' do
         sign_up_link = find_all('a')[4].native.inner_text
         expect(sign_up_link).to eq("登録する")
       end
-        it 'ログインリンクが表示される: 左上から5番目のリンクが「ログイン」である' do
+      it 'ログインリンクが表示される: 左上から5番目のリンクが「ログイン」である' do
         log_in_link = find_all('a')[5].native.inner_text
         expect(log_in_link).to eq("ログイン")
       end
@@ -110,22 +110,22 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'last_nameフォームが表示される' do
         expect(page).to have_field 'user[last_name]'
       end
-       it 'first_nameフォームが表示される' do
+      it 'first_nameフォームが表示される' do
         expect(page).to have_field 'user[first_name]'
       end
-       it 'last_name_kanaフォームが表示される' do
+      it 'last_name_kanaフォームが表示される' do
         expect(page).to have_field 'user[last_name_kana]'
       end
-       it 'first_name_kanaフォームが表示される' do
+      it 'first_name_kanaフォームが表示される' do
         expect(page).to have_field 'user[first_name_kana]'
       end
-       it 'zipcodeフォームが表示される' do
+      it 'zipcodeフォームが表示される' do
         expect(page).to have_field 'user[zipcode]'
       end
-       it 'addressフォームが表示される' do
+      it 'addressフォームが表示される' do
         expect(page).to have_field 'user[address]'
       end
-       it 'phone_numberフォームが表示される' do
+      it 'phone_numberフォームが表示される' do
         expect(page).to have_field 'user[phone_number]'
       end
       it 'emailフォームが表示される' do

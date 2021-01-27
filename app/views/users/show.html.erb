@@ -21,7 +21,7 @@
         <div class="p-list">
           <%= link_to pet_path(pet.id) do %>
             <% pet.pet_images.first(1).each do |image| %>
-             <%= attachment_image_tag image, :image, size: '350x350', class: "rounded" %>
+             <%= attachment_image_tag image, :image, format: "jpeg", size: '350x350', class: "rounded" %>
              <% end %>
           <% end %>
           <p class="pet-name">お名前:

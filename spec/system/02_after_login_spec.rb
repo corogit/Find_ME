@@ -19,26 +19,26 @@ describe '[STEP2] ユーザログイン後のテスト' do
     context 'リンクの内容を確認: ※logoutは『ユーザログアウトのテスト』でテスト済みになります。' do
       subject { current_path }
 
-       it 'TOPを押すと、トップ画面に遷移する' do
+      it 'TOPを押すと、トップ画面に遷移する' do
         top_link = find_all('a')[1].native.inner_text
         top_link = top_link.delete(' ')
         top_link.gsub!(/\n/, '')
         click_link top_link
         is_expected.to eq '/'
       end
-       it 'マイページを押すと、自分のユーザ詳細画面に遷移する' do
+      it 'マイページを押すと、自分のユーザ詳細画面に遷移する' do
         user_link = find_all('a')[2].native.inner_text
         user_link = user_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link user_link
         is_expected.to eq '/users/' + user.id.to_s
       end
-        it '飼い主さん募集中の動物たちを押すと、ペット一覧画面に遷移する' do
+      it '飼い主さん募集中の動物たちを押すと、ペット一覧画面に遷移する' do
         pets_link = find_all('a')[3].native.inner_text
         pets_link = pets_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link pets_link
         is_expected.to eq '/pets'
       end
-        it '投稿フォームを押すと、ペット新規投稿フォームに遷移する' do
+      it '投稿フォームを押すと、ペット新規投稿フォームに遷移する' do
         pets_new_link = find_all('a')[4].native.inner_text
         pets_new_link = pets_new_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link pets_new_link
@@ -109,19 +109,19 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it '投稿ペットの名前が表示される' do
         expect(page).to have_content pet.name
       end
-       it '投稿ペットの誕生日が表示される' do
+      it '投稿ペットの誕生日が表示される' do
         expect(page).to have_content pet.birthday
       end
-       it '投稿ペットの年齢が表示される' do
+      it '投稿ペットの年齢が表示される' do
         expect(page).to have_content pet.age
       end
-       it '投稿ペットの性別が表示される' do
+      it '投稿ペットの性別が表示される' do
         expect(page).to have_content pet.gender
       end
-       it '投稿ペットの都道府県が表示される' do
+      it '投稿ペットの都道府県が表示される' do
         expect(page).to have_content pet.prefecture.name
       end
-       it '投稿ペットの紹介が表示される' do
+      it '投稿ペットの紹介が表示される' do
         expect(page).to have_content pet.introduction
       end
       it '投稿の編集リンクが表示される' do
@@ -155,16 +155,16 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it 'birthday編集フォームが表示される' do
         expect(page).to have_field 'pet[birthday]', with: pet.birthday
       end
-        it 'age編集フォームが表示される' do
+      it 'age編集フォームが表示される' do
         expect(page).to have_field 'pet[age]', with: pet.age
       end
-        it 'gender編集フォームが表示される' do
+      it 'gender編集フォームが表示される' do
         expect(page).to have_field 'pet[gender]', with: pet.gender
       end
-        it 'prefecture編集フォームが表示される' do
+      it 'prefecture編集フォームが表示される' do
         expect(page).to have_field 'pet[prefecture_id]', with: pet.prefecture_id
       end
-        it 'introduction編集フォームが表示される' do
+      it 'introduction編集フォームが表示される' do
         expect(page).to have_field 'pet[introduction]', with: pet.introduction
       end
       it 'Update Bookボタンが表示される' do

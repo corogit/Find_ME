@@ -82,7 +82,7 @@ gem 'kaminari', '~> 1.2.1'
 gem 'active_hash'
 
 gem 'carrierwave'
-gem 'rails-i18n', '~> 5.1' 
+gem 'rails-i18n', '~> 5.1'
 
 group :production do
   gem 'mysql2'
