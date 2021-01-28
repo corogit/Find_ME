@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 describe 'ユーザのテスト' do
-  let(:user) { FactoryBot.build(:user) }
-  
+  let!(:user) { FactoryBot.build(:user) }
+
   describe 'トップ画面のテスト' do
     before do
       visit root_path
@@ -63,6 +63,28 @@ describe 'ユーザのテスト' do
         expect(page).to have_button "登録する"
       end
     end
+
+    context '新規登録成功のテスト' do
+      before do
+        fill_in 'user[last_name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[first_name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[last_name_kana]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[first_name_kana]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[zipcode]', with: Faker::Lorem.characters(number: 7)
+        fill_in 'user[address]', with: Faker::Lorem.characters(number: 20)
+        fill_in 'user[phone_number]', with: Faker::Lorem.characters(number: 11)
+        fill_in 'user[email]', with: Faker::Internet.email
+        fill_in 'user[password]', with: 'password'
+        fill_in 'user[password_confirmation]', with: 'password'
+      end
+
+      # it '正しく新規登録される' do
+      #   expect {
+      #     click_button '登録する'
+      #   }.to change(User.all, :count).by(1)
+      # end
+    end
+
   end
 
   describe 'ユーザログイン' do
@@ -109,7 +131,7 @@ describe 'ユーザのテスト' do
     end
   end
 
-  
+
   describe 'ユーザログアウトのテスト' do
     before do
       visit new_user_session_path
@@ -127,5 +149,5 @@ describe 'ユーザのテスト' do
       end
     end
   end
-  
+
 end

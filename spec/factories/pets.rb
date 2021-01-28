@@ -5,7 +5,7 @@ FactoryBot.define do
     age { '1' }
     gender { '男の子♂' }
     introduction { 'よろしくお願いします。' }
-    image { File.open('./app/assets/images/no_image.jpg', ?r) }
+    #image {Rack::Test::UploadedFile.new(Rails.root + "app/assets/images/no_image.jpg", "image/jpg")} #{ File.open("#{Rails.root}/app/assets/images/no_image.jpg") }
     user
     genre
     prefecture

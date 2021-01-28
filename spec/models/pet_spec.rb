@@ -6,8 +6,8 @@ describe 'Petモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     subject { pet.valid? }
 
-    let(:user) { FactoryBot.build(:user) }
-    let(:pet) { FactoryBot.build(:pet) }
+    let!(:user) { FactoryBot.build(:user) }
+    let!(:pet) { FactoryBot.build(:pet) }
 
     context 'nameカラム' do
       it '空欄でないこと' do
