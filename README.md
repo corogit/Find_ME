@@ -34,3 +34,8 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+
+#### 使用素材
+- http://free-photo.net/
+- https://free-materials.com/
+- https://www.onamae.com/
