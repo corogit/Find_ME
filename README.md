@@ -1,4 +1,4 @@
-#![logo](https://user-images.githubusercontent.com/66649016/106108575-c8137980-618b-11eb-836d-23e973c2bd4a.png)
+![logo](https://user-images.githubusercontent.com/66649016/106108575-c8137980-618b-11eb-836d-23e973c2bd4a.png)
 
 ## サイト概要
 ペットを譲りたい人とペットを引き取りたい人を繋ぐサイトです。
