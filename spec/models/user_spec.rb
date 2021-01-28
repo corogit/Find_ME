@@ -6,41 +6,65 @@ describe 'Userモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     subject { user.valid? }
 
-    let!(:other_user) { create(:user) }
-    let(:user) { build(:user) }
+ let(:user) { FactoryBot.build(:user) }
 
     context 'last_nameカラム' do
       it '空欄でないこと' do
         user.last_name = ''
         is_expected.to eq false
       end
-      it '2文字以上であること: 1文字は×' do
-        user.last_name = Faker::Lorem.characters(number: 1)
+    end
+
+    context 'first_nameカラム' do
+      it '空欄でないこと' do
+        user.first_name = ''
         is_expected.to eq false
       end
-      it '2文字以上であること: 2文字は〇' do
-        user.last_name = Faker::Lorem.characters(number: 2)
-        is_expected.to eq true
-      end
-      it '20文字以下であること: 20文字は〇' do
-        user.last_name = Faker::Lorem.characters(number: 20)
-        is_expected.to eq true
-      end
-      it '20文字以下であること: 21文字は×' do
-        user.last_name = Faker::Lorem.characters(number: 21)
+    end
+    
+    context 'last_name_kanaカラム' do
+      it '空欄でないこと' do
+        user.last_name_kana = ''
         is_expected.to eq false
       end
-      # it '一意性があること' do
-      # user.name = other_user.name
-      # is_expected.to eq false
-      # end
+    end
+    
+    context 'first_name_kanaカラム' do
+      it '空欄でないこと' do
+        user.first_name_kana = ''
+        is_expected.to eq false
+      end
+    end
+    
+    context 'zipcodeカラム' do
+      it '空欄でないこと' do
+        user.zipcode = ''
+        is_expected.to eq false
+      end
+    end
+    
+    context 'addressカラム' do
+      it '空欄でないこと' do
+        user.address = ''
+        is_expected.to eq false
+      end
+    end
+    
+    context 'phone_number' do
+      it '空欄でないこと' do
+        user.phone_number = ''
+        is_expected.to eq false
+      end
+    end
+    
+    context 'emailカラム' do
+      it '空欄でないこと' do
+        user.email = ''
+        is_expected.to eq false
+      end
     end
 
     context 'introductionカラム' do
-      it '50文字以下であること: 50文字は〇' do
-        user.introduction = Faker::Lorem.characters(number: 50)
-        is_expected.to eq true
-      end
       it '50文字以下であること: 51文字は×' do
         user.introduction = Faker::Lorem.characters(number: 51)
         is_expected.to eq false

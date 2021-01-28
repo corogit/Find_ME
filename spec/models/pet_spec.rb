@@ -6,10 +6,31 @@ describe 'Petモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     subject { pet.valid? }
 
-    let(:user) { create(:user) }
-    let!(:pet) { build(:pet, user_id: user.id) }
+    let(:user) { FactoryBot.build(:user) }
+    let(:pet) { FactoryBot.build(:pet) }
 
     context 'nameカラム' do
+      it '空欄でないこと' do
+        pet.name = ''
+        is_expected.to eq false
+      end
+    end
+    
+    context 'imageカラム' do
+      it '空欄でないこと' do
+        pet.image = ''
+        is_expected.to eq false
+      end
+    end
+    
+    context 'birthdayカラム' do
+      it '空欄でないこと' do
+        pet.name = ''
+        is_expected.to eq false
+      end
+    end
+    
+    context 'genderカラム' do
       it '空欄でないこと' do
         pet.name = ''
         is_expected.to eq false
@@ -19,11 +40,7 @@ describe 'Petモデルのテスト', type: :model do
     context 'introductionカラム' do
       it '空欄でないこと' do
         pet.introduction = ''
-        is_expected.to eq true
-      end
-      it '200文字以下であること: 200文字は〇' do
-        pet.introduction = Faker::Lorem.characters(number: 200)
-        is_expected.to eq true
+        is_expected.to eq false
       end
       it '200文字以下であること: 201文字は×' do
         pet.introduction = Faker::Lorem.characters(number: 201)

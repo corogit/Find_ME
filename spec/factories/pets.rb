@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :pet do
-    name { Faker::Lorem.characters(number: 9) }
+  factory :pet, class: Pet do
+    name { 'ポチ' }
     birthday { '2020-1-1' }
     age { '1' }
     gender { '男の子♂' }

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     user_path(resource)
   end
+ 
   
   def check_guest
     email = resource&.email || params[:user][:email].downcase
@@ -21,5 +22,6 @@ class ApplicationController < ActionController::Base
         :zipcode, :address, :phone_number, :email,
       ]
     )
+    devise_parameter_sanitizer.permit(:sign_in,keys: [:email])
   end
 end
