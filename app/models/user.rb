@@ -22,7 +22,7 @@ class User < ApplicationRecord
                                       dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
-  validates :last_name, presence: true, uniqueness: true
+  validates :last_name, presence: true
   validates :first_name, presence: true
   VALID_KANA_REGEX = /\A[\p{katakana}\p{blank}ー－]+\z/.freeze
   validates :last_name_kana, presence: true, format: { with: VALID_KANA_REGEX }
@@ -53,4 +53,20 @@ class User < ApplicationRecord
   def full_name
     last_name + first_name
   end
+  
+  def self.guest
+    find_or_create_by!(last_name: 'テスト',
+    first_name: 'テスト',
+    last_name_kana: 'テスト',
+    first_name_kana: 'テスト',
+    zipcode: '6666666',
+    address: '東京都1-1-1',
+    phone_number: '0900000000',
+    email: 'test@example.com'
+    ) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+    end
+  end
+  
 end
