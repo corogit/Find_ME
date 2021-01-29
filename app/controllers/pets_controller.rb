@@ -54,7 +54,7 @@ class PetsController < ApplicationController
 
   def search
     @search_params = pet_search_params  # 検索結果の画面で、フォームに検索した値を表示するために、paramsの値をビューで使えるようにする
-    @pets = Pet.search(@search_params).includes(:genre).page(params[:page]).per(4)
+    @pets = Pet.where(:is_active => true).search(@search_params).includes(:genre).page(params[:page]).per(4)
     # Reservationモデルのsearchを呼び出し、引数としてparamsを渡している。
   end
 

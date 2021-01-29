@@ -1,3 +1,4 @@
+<!--display:noneで一旦メッセージを表示させない-->
 <div class="mycomment" id="mycomment-<%=message.id%>" style="display:none">
   <%= simple_format message.message %><br>
   <%= message.created_at.strftime('%Y/%m/%d') %>
@@ -13,12 +14,14 @@
     </div>
   </div>
 </div>
+
+<!--ここでメッセージを表示させる側を決める-->
 <script>
-  var direct_message = "<%= message.user_id %>";
-  var dm_user = $("#current_user").attr("data-id");
-  if (direct_message == dm_user){
-    $("#mycomment-<%=message.id%>").show();
+  var direct_message = "<%= message.user_id %>"; //メッセージを送った人
+  var dm_user = $("#current_user").attr("data-id");　//カレントユーザー
+  if (direct_message == dm_user){  //メッセージを送った人==カレントユーザーなら
+    $("#mycomment-<%=message.id%>").show(); //mycommentサイドのメッセージを表示
   }else{
-    $("#fukidasi-<%=message.id%>").show();
+    $("#fukidasi-<%=message.id%>").show(); //fukidasiサイドのメッセージを
   }
 </script>
