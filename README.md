@@ -1,6 +1,4 @@
 ![logo](https://user-images.githubusercontent.com/66649016/106108575-c8137980-618b-11eb-836d-23e973c2bd4a.png)
-
-###TOPページ一部抜粋
 <img width="1214" alt="スクリーンショット 2021-01-30 17 48 14" src="https://user-images.githubusercontent.com/66649016/106352044-6e45b780-6323-11eb-973f-6afb3a00155b.png">  
 
 ## サイト概要
