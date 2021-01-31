@@ -8,7 +8,8 @@
         <%= link_to root_path do %>
           <p id="logo-head"><%= image_tag 'logo1.png', :size => '150x75' %></p>
         <% end %>
-        <ul class="navbar-nav ml-auto"> 
+        <ul class="navbar-nav ml-auto">
+           
         <% if user_signed_in? %>
           <p class="welcome"> ようこそ、<strong><%= current_user.last_name %> <%= current_user.first_name %></strong> さん！</p>
           <li class="nav-item">
@@ -28,6 +29,11 @@
           </li><br>
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn' %>
+          </li>
+
+        <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn' %>
           </li>
 
         <% else %>
