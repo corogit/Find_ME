@@ -20,7 +20,6 @@
           <tr>
             <td><%= f.label :"ジャンル" %></td>
             <td><%= f.collection_select(:genre_id, Genre.where(:is_active => true), :id, :name, prompt: "-- 選択してください--") %></td>
-            <td><%= link_to "新ジャンル追加", genres_path, class: "btn btn-outline-secondary" %></td>
           </tr>
           <tr>
             <td><%= f.label :"生年月日" %></td>

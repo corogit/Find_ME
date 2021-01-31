@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-9 offset-lg-1">
+      <p id="notice"><%=  notice %></p>
+      <%= render 'layouts/error_messages', model: @genre %>
+      <%= form_with model: @genre, url: genres_path, local: true do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <td></td>
+            <td><%= f.label :"ジャンル" %></td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><%= f.radio_button :is_active, true %>取り扱い中
+                <%= f.radio_button :is_active, false %>現在取り扱っておりません</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><%= f.submit "追加", class: "btn btn-secondary ml-3 mt-3" %></td>
+          </tr>
+        </table>
+      <% end %>
+  
+      <table class="table table-bordered text-center mt-5">
+        <thead class='thead-light'>
+          <tr class="table-name">
+            <th>ジャンル</th>
+            <th>状態</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody style="padding-bottom: 100px">
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= genre.name %></td>
+              <td><% if genre.is_active == true %>
+                  取り扱い中
+                  <% elsif genre.is_active == false %>
+                  現在取り扱っておりません
+                  <% end %>
+              </td>
+              <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-secondary" %>
+                  <%= link_to "削除する", admin_genre_path(genre.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
