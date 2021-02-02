@@ -2,6 +2,12 @@
 
 class Admins::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  
+  def new_guest
+    admin = Admin.guest
+    sign_in admin
+    redirect_to admin_genres_path, notice: 'ゲスト管理者としてログインしました。'
+  end
 
   # GET /resource/sign_in
   # def new
@@ -27,7 +33,7 @@ class Admins::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource)
-    new_admin_session_path
+    new_user_session_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.

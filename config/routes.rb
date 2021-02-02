@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
+  devise_scope :admin do
+    post 'admins/guest_sign_in', to: 'admins/sessions#new_guest'
+  end
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
