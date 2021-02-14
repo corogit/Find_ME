@@ -27,10 +27,13 @@ $(document).on('turbolinks:load', function() {
       }, 800);
       event.preventDefault();
     });
-     $('#slider').slick({
-      dots: true, //スライドの下にドットのナビゲーションを表示
-      autoplay: true, //自動再生
-      autoplaySpeed: 4000, //再生スピード
-    });
+  });
+});
+
+$(document).on('turbolinks:load', function() {
+  $('#slider').slick({
+    dots: true, //スライドの下にドットのナビゲーションを表示
+    autoplay: true, //自動再生
+    autoplaySpeed: 4000, //再生スピード
   });
 });
