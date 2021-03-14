@@ -1,6 +1,7 @@
-![logo](https://user-images.githubusercontent.com/66649016/106108575-c8137980-618b-11eb-836d-23e973c2bd4a.png)
 <img width="1429" alt="スクリーンショット 2021-03-14 14 46 27" src="https://user-images.githubusercontent.com/66649016/111058816-678a9280-84d4-11eb-8400-7d2de4b97642.png">
-<img width="1411" alt="スクリーンショット 2021-03-14 14 48 19" src="https://user-images.githubusercontent.com/66649016/111058819-6d807380-84d4-11eb-8827-9cad9078be72.png">  
+<img width="1411" alt="スクリーンショット 2021-03-14 14 48 19" src="https://user-images.githubusercontent.com/66649016/111058819-6d807380-84d4-11eb-8827-9cad9078be72.png">
+<img width="1302" alt="スクリーンショット 2021-03-14 14 57 13" src="https://user-images.githubusercontent.com/66649016/111059222-25af1b80-84d7-11eb-8e09-d375a3e95a5c.png">
+<img width="1314" alt="スクリーンショット 2021-03-14 14 57 32" src="https://user-images.githubusercontent.com/66649016/111059223-26e04880-84d7-11eb-94d3-f4b7c2201f4d.png">
 
 ## サイト概要
 ペットを譲りたい人とペットを引き取りたい人を繋ぐサイトです。
