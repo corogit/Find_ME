@@ -3,7 +3,11 @@
     <div class="col-lg-12">
       <div class="background">
       <h2 class="heading">ログイン</h2>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%#= render 'layouts/error_messages', model: @user %>
+      <!--以下でないとログイン画面にエラーメッセージが表示されない-->
+      <% flash.each do |email, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{email}" if msg.is_a?(String) %>
+      <% end %></br>
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
         <div class="field">
           <%= f.label :メールアドレス %><br />
